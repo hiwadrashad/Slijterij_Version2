@@ -54,7 +54,7 @@ namespace SlijterijSjonnieLoper_version2.Models
 
         public int NumberOfBottlesReserved { get; set; }
 
-        public List<CustomerModel> Reservations { get; set; }
+        //   public List<CustomerModel> Reservations { get; set; }
 
         [Display (Name = "Is removed")]
 
@@ -63,7 +63,7 @@ namespace SlijterijSjonnieLoper_version2.Models
         public WhiskeyModel()
         {
             id = Guid.NewGuid().ToString();
-            Reservations = new List<CustomerModel>();
+        //    Reservations = new List<CustomerModel>();
         }
 
     }

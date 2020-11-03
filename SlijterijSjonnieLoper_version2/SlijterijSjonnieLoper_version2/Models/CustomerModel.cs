@@ -53,23 +53,18 @@ namespace SlijterijSjonnieLoper_version2.Models
 
         public string PostalNumber { get; set; }
 
-        [Required]
-        [Display(Name = "Birth date")]
-
-        public DateTime BirthDate { get; set; }
-
         [Display(Name = "Birth place")]
 
         public string BirthPlace { get; set; }
 
-        [Display(Name = "Whiskeys reserved")]
+      // [Display(Name = "Whiskeys reserved")]
 
-        public List<BestellingModel> Whiskeys { get; set; }
+      // public List<BestellingModel> Whiskeys { get; set; }
 
         public CustomerModel()
         {
             id = Guid.NewGuid().ToString();
-            Whiskeys = new List<BestellingModel>();
+        //    Whiskeys = new List<BestellingModel>();
         }
 
 

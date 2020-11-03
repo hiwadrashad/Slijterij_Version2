@@ -168,16 +168,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
+    <Compile Include="Controllers\WhiskeyController.cs" />
     <Compile Include="DAL\IDataService.cs" />
     <Compile Include="DAL\MockdataService.cs" />
+    <Compile Include="GeneralFunctions\GeneralFunctions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202011021557253_intialupdate.cs" />
     <Compile Include="Migrations\202011021557253_intialupdate.Designer.cs">
       <DependentUpon>202011021557253_intialupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011031303226_DBUpdated.cs" />
+    <Compile Include="Migrations\202011031303226_DBUpdated.Designer.cs">
+      <DependentUpon>202011031303226_DBUpdated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AlcoholPercentagesModel.cs" />
@@ -218,6 +226,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\WhiskeyLabel.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -265,9 +274,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Customer\CustomerOverview.cshtml" />
+    <Content Include="Views\Customer\AddNewCustomer.cshtml" />
+    <Content Include="Views\Customer\CustomerData.cshtml" />
+    <Content Include="Views\Customer\ChangeCustomerData.cshtml" />
+    <Content Include="Views\Customer\RemoveCustomerdata.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Reservation\" />
+    <Folder Include="Views\Whiskey\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -285,6 +301,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202011021557253_intialupdate.resx">
       <DependentUpon>202011021557253_intialupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011031303226_DBUpdated.resx">
+      <DependentUpon>202011031303226_DBUpdated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
