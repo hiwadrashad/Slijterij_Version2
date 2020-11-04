@@ -37,7 +37,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             {
                 // TODO: Add insert logic here
                 MockdataService.GetMockdataService().AddCustomer(customer);
-                return RedirectToAction("Index");
+                return RedirectToAction("CustomerOverview");
             }
             catch
             {
@@ -49,6 +49,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         public ActionResult ChangeCustomerData(string id)
         {
             return View(MockdataService.GetMockdataService().GetCustomer(id));
+            
         }
 
         // POST: AddCustomer/Edit/5
@@ -59,7 +60,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             {
                 // TODO: Add update logic here
                 MockdataService.GetMockdataService().UpdateCustomer(customer);
-                return RedirectToAction("Index");
+                return RedirectToAction("CustomerOverview");
             }
             catch
             {
@@ -81,7 +82,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             {
                 // TODO: Add delete logic here
                 MockdataService.GetMockdataService().DeleteCustomer(customer.id);
-                return RedirectToAction("Index");
+                return RedirectToAction("CustomerOverview");
             }
             catch
             {

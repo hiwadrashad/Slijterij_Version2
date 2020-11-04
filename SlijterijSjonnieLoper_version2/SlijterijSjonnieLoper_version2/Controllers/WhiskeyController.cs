@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SlijterijSjonnieLoper_version2.DAL;
+using SlijterijSjonnieLoper_version2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,13 +13,13 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         // GET: Whiskey
         public ActionResult WhiskeyOverView()
         {
-            return View();
+            return View(MockdataService.GetMockdataService().GetAllWhiskeys());
         }
 
         // GET: Whiskey/Details/5
-        public ActionResult WhiskeyData(int id)
+        public ActionResult WhiskeyData(string id)
         {
-            return View();
+            return View(MockdataService.GetMockdataService().GetWhiskey(id));
         }
 
         // GET: Whiskey/Create
@@ -28,13 +30,13 @@ namespace SlijterijSjonnieLoper_version2.Controllers
 
         // POST: Whiskey/Create
         [HttpPost]
-        public ActionResult AddNewWhiskey(FormCollection collection)
+        public ActionResult AddNewWhiskey(WhiskeyModel whiskey)
         {
             try
             {
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                MockdataService.GetMockdataService().AddWhiskey(whiskey);
+                return RedirectToAction("WhiskeyOverView");
             }
             catch
             {
@@ -43,20 +45,20 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         }
 
         // GET: Whiskey/Edit/5
-        public ActionResult ChangeWhiskeyData(int id)
+        public ActionResult ChangeWhiskeyData(string id)
         {
-            return View();
+            return View(MockdataService.GetMockdataService().GetWhiskey(id));
         }
 
         // POST: Whiskey/Edit/5
         [HttpPost]
-        public ActionResult ChangeWhiskeyData(int id, FormCollection collection)
+        public ActionResult ChangeWhiskeyData(string id, WhiskeyModel whiskey)
         {
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                MockdataService.GetMockdataService().UpdateWhiskey(whiskey);
+                return RedirectToAction("WhiskeyOverView");
             }
             catch
             {

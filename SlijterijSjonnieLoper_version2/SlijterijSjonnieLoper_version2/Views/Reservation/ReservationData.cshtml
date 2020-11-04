@@ -1,0 +1,90 @@
+﻿@model SlijterijSjonnieLoper_version2.Models.BestellingModel
+
+@{
+    ViewBag.Title = "ReservationData";
+}
+
+<h2>ReservationData</h2>
+
+<div>
+    <h4>BestellingModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AmountOfBottles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmountOfBottles)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfReservation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfReservation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfCompletionOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfCompletionOrder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletedOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletedOrder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StreetName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StreetName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StreetNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StreetNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HouseNumberAddition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HouseNumberAddition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostalCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

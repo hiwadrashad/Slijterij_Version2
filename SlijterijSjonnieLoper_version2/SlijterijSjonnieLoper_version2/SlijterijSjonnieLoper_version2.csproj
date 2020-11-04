@@ -198,6 +198,7 @@
     <Compile Include="Models\TypesOfWhiskeyModel.cs" />
     <Compile Include="Models\WhiskeyModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Singleton\Singleton.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
@@ -279,11 +280,18 @@
     <Content Include="Views\Customer\CustomerData.cshtml" />
     <Content Include="Views\Customer\ChangeCustomerData.cshtml" />
     <Content Include="Views\Customer\RemoveCustomerdata.cshtml" />
+    <Content Include="Views\Reservation\ReservationOverview.cshtml" />
+    <Content Include="Views\Reservation\GenerateNewReservation.cshtml" />
+    <Content Include="Views\Reservation\ReservationData.cshtml" />
+    <Content Include="Views\Reservation\ChangeDataReservation.cshtml" />
+    <Content Include="Views\Reservation\RemoveReservation.cshtml" />
+    <Content Include="Views\Whiskey\WhiskeyOverView.cshtml" />
+    <Content Include="Views\Whiskey\WhiskeyData.cshtml" />
+    <Content Include="Views\Whiskey\AddNewWhiskey.cshtml" />
+    <Content Include="Views\Whiskey\ChangeWhiskeyData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Reservation\" />
-    <Folder Include="Views\Whiskey\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

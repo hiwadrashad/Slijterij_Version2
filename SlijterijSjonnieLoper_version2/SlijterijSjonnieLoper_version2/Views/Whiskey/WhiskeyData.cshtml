@@ -1,0 +1,66 @@
+﻿@model SlijterijSjonnieLoper_version2.Models.WhiskeyModel
+
+@{
+    ViewBag.Title = "WhiskeyData";
+}
+
+<h2>WhiskeyData</h2>
+
+<div>
+    <h4>WhiskeyModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfBottlesOnStorage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfBottlesOnStorage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfBottlesReserved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfBottlesReserved)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsRemoved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsRemoved)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SlijterijSjonnieLoper_version2.DAL;
+using SlijterijSjonnieLoper_version2.Models;
 
 namespace SlijterijSjonnieLoper_version2.Controllers
 {
@@ -11,13 +13,14 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         // GET: ReservationAdd
         public ActionResult ReservationOverview()
         {
-            return View();
+            return View(MockdataService.GetMockdataService().GetAllBestellingen().ToList());
+
         }
 
         // GET: ReservationAdd/Details/5
-        public ActionResult ReservationData(int id)
+        public ActionResult ReservationData(string id)
         {
-            return View();
+            return View(MockdataService.GetMockdataService().GetBestelling(id));
         }
 
         // GET: ReservationAdd/Create
@@ -28,13 +31,13 @@ namespace SlijterijSjonnieLoper_version2.Controllers
 
         // POST: ReservationAdd/Create
         [HttpPost]
-        public ActionResult GenerateNewReservation(FormCollection collection)
+        public ActionResult GenerateNewReservation(BestellingModel bestelling)
         {
             try
             {
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                MockdataService.GetMockdataService().AddBestelling(bestelling);
+                return RedirectToAction("ReservationOverview");
             }
             catch
             {
@@ -43,20 +46,21 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         }
 
         // GET: ReservationAdd/Edit/5
-        public ActionResult ChangeDataReservation(int id)
+        public ActionResult ChangeDataReservation(string id)
         {
-            return View();
+            return View(MockdataService.GetMockdataService().GetBestelling(id));
+
         }
 
         // POST: ReservationAdd/Edit/5
         [HttpPost]
-        public ActionResult ChangeDataReservation(int id, FormCollection collection)
+        public ActionResult ChangeDataReservation(string id, BestellingModel bestelling)
         {
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                MockdataService.GetMockdataService().UpdateBestelling(bestelling);
+                return RedirectToAction("ReservationOverview");
             }
             catch
             {
@@ -65,20 +69,20 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         }
 
         // GET: ReservationAdd/Delete/5
-        public ActionResult RemoveReservation(int id)
+        public ActionResult RemoveReservation(string id)
         {
-            return View();
+            return View(MockdataService.GetMockdataService().GetBestelling(id));
         }
 
         // POST: ReservationAdd/Delete/5
         [HttpPost]
-        public ActionResult RemoveReservation(int id, FormCollection collection)
+        public ActionResult RemoveReservation(string id, BestellingModel bestelling)
         {
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                MockdataService.GetMockdataService().DeleteBestelling(bestelling.id);
+                return RedirectToAction("ReservationOverview");
             }
             catch
             {

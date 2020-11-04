@@ -39,7 +39,7 @@ namespace SlijterijSjonnieLoper_version2.DAL
             return _MockdataService;
         }
 
-        private void InitData()
+        public void InitData()
         {
             _bestelling = new List<BestellingModel>()
             {
