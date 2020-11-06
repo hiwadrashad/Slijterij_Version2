@@ -10,6 +10,7 @@ namespace SlijterijSjonnieLoper_version2.Models
     public class CustomerModel
     {
  
+        [Key]
         public string id { get; set; }
 
         [Required]
@@ -61,11 +62,11 @@ namespace SlijterijSjonnieLoper_version2.Models
 
       // public List<BestellingModel> Whiskeys { get; set; }
 
-        public CustomerModel()
-        {
-            id = Guid.NewGuid().ToString();
-        //    Whiskeys = new List<BestellingModel>();
-        }
+        //public CustomerModel()
+        //{
+        //    this.id = Guid.NewGuid().ToString();
+        ////    Whiskeys = new List<BestellingModel>();
+        //}
 
 
     }

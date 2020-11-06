@@ -11,6 +11,11 @@ namespace SlijterijSjonnieLoper_version2.Controllers
     public class WhiskeyController : Controller
     {
         // GET: Whiskey
+
+        public ActionResult WhiskeySearchOverview(string searching)
+        {
+            return View(MockdataService.GetMockdataService().SearchWhiskeys(searching));
+        }
         public ActionResult WhiskeyOverView()
         {
             return View(MockdataService.GetMockdataService().GetAllWhiskeys());
@@ -30,10 +35,12 @@ namespace SlijterijSjonnieLoper_version2.Controllers
 
         // POST: Whiskey/Create
         [HttpPost]
-        public ActionResult AddNewWhiskey(WhiskeyModel whiskey)
+        public ActionResult AddNewWhiskey(WhiskeyModel whiskey, HttpPostedFileBase StoredImage)
         {
+            
             try
             {
+                whiskey.LabelImage = StoredImage;
                 // TODO: Add insert logic here
                 MockdataService.GetMockdataService().AddWhiskey(whiskey);
                 return RedirectToAction("WhiskeyOverView");
@@ -52,11 +59,12 @@ namespace SlijterijSjonnieLoper_version2.Controllers
 
         // POST: Whiskey/Edit/5
         [HttpPost]
-        public ActionResult ChangeWhiskeyData(string id, WhiskeyModel whiskey)
+        public ActionResult ChangeWhiskeyData(string id, WhiskeyModel whiskey, HttpPostedFileBase StoredImage)
         {
             try
             {
                 // TODO: Add update logic here
+                whiskey.LabelImage = StoredImage;
                 MockdataService.GetMockdataService().UpdateWhiskey(whiskey);
                 return RedirectToAction("WhiskeyOverView");
             }

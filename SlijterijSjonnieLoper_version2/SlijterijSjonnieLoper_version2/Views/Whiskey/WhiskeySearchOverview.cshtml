@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<SlijterijSjonnieLoper_version2.Models.WhiskeyModel>
 
 @{
-    ViewBag.Title = "WhiskeyOverView";
+    ViewBag.Title = "WhiskeySearchOverview";
 }
 
-<h2>WhiskeyOverView</h2>
+<h2>WhiskeySearchOverview</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-@using (Html.BeginForm("WhiskeySearchOverview", "Whiskey", FormMethod.Get))
+@using (Html.BeginForm("WhiskeySearchOverview", "Default", FormMethod.Get))
 {
     @Html.TextBox("searching")
     <input type="submit" value="Search">

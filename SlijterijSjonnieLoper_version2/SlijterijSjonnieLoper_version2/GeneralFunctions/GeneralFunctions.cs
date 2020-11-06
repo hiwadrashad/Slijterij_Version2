@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SlijterijSjonnieLoper_version2.DAL;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -37,6 +38,20 @@ namespace SlijterijSjonnieLoper_version2.GeneralFunctions
 
                 return (T)formatter.Deserialize(ms);
             }
+        }
+    }
+
+    public static class ImageProcessing
+    {
+        public static string ConvertHttpPostfilebaseto64bytearray(string id)
+        {
+            var model = MockdataService.GetMockdataService().GetWhiskey(id);
+            MemoryStream target = new MemoryStream();
+            model.LabelImage.InputStream.CopyTo(target);
+            byte[] data = target.ToArray();
+            var base64 = Convert.ToBase64String(data);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            return imgSrc;
         }
     }
 }

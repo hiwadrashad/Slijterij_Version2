@@ -8,6 +8,7 @@ namespace SlijterijSjonnieLoper_version2.Models
 {
     public class BestellingModel
     {
+        [Key]
         public string id { get; set; }
 
         [Required]
@@ -33,18 +34,7 @@ namespace SlijterijSjonnieLoper_version2.Models
 
         [Required]
         [Display(Name = "Order Completed?")]
-        public bool CompletedOrder { 
-            get
-            { return this.CompletedOrder; } 
-            set 
-            {
-                this.CompletedOrder = value;
-                if (this.CompletedOrder == true)
-                {
-                   this.DateOfCompletionOrder = DateTime.Now;
-                }
-            }
-        }
+        public bool CompletedOrder { get; set; }
         [Required]
         [Display(Name = "City to send to")]
         public string City { get; set; }
@@ -68,10 +58,10 @@ namespace SlijterijSjonnieLoper_version2.Models
 
         public string PostalCode { get; set; }
 
-        public BestellingModel()
-        {
-            id = Guid.NewGuid().ToString();
-            DateOfReservation = DateTime.Now;
-        }
+        //public BestellingModel()
+        //{
+        //    this.id = Guid.NewGuid().ToString();
+        //    this.DateOfReservation = DateTime.Now;
+        //}
     }
 }

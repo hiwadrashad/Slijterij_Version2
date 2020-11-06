@@ -45,16 +45,16 @@ namespace SlijterijSjonnieLoper_version2.DAL
             {
                 new BestellingModel { id = Guid.NewGuid().ToString(), AmountOfBottles = 14,
                     City = "Alaska", CompletedOrder = false, Customer = new CustomerModel { id = Guid.NewGuid().ToString(),
-                    DateOfBirth = new DateTime(2000, 12, 12), BirthPlace = "California", City = "Alaska", FirstName = "John", 
+                    DateOfBirth = new DateTime(2000, 12, 12), BirthPlace = "California", City = "Alaska", FirstName = "John",
                     LastName = "Smith", HouseNumberAddition = "N.A", PostalNumber = "3525XA", PrepositionName = "N.A",
                     StreetName = "Juxtonstreet", StreetNumber = 9}, DateOfCompletionOrder = new DateTime(2020, 12, 12),
-                    DateOfReservation = new DateTime(2019, 12, 12), HouseNumberAddition = "N.A", StreetNumber = 9, 
+                    DateOfReservation = new DateTime(2019, 12, 12), HouseNumberAddition = "N.A", StreetNumber = 9,
                     PostalCode = "3526XL", StreetName ="Grovestreet", Whiskey = new WhiskeyModel { id = Guid.NewGuid().ToString(),
                     age = 12, alcoholPercentages = AlcoholPercentagesModel.fortysix, IsRemoved = false, Name = "Lambare",
                     NumberOfBottlesOnStorage = 12, Price = 45.50, typesOfWhiskey = TypesOfWhiskeyModel.Rye,
                     NumberOfBottlesReserved = 12, ProductionSite = ProductionSite.LowLand,
                     LabelImage = new  MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))} } ,
-                    
+
                 new BestellingModel { id = Guid.NewGuid().ToString(), AmountOfBottles = 14,
                     City = "Alaska", CompletedOrder = false, Customer = new CustomerModel { id = Guid.NewGuid().ToString(),
                     DateOfBirth = new DateTime(2000, 12, 12), BirthPlace = "California", City = "Alaska", FirstName = "John",
@@ -66,7 +66,7 @@ namespace SlijterijSjonnieLoper_version2.DAL
                     NumberOfBottlesOnStorage = 12, Price = 45.50, typesOfWhiskey = TypesOfWhiskeyModel.Rye,
                     NumberOfBottlesReserved = 12, ProductionSite = ProductionSite.LowLand,
                     LabelImage = new  MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))} },
-                     
+
                 new BestellingModel { id = Guid.NewGuid().ToString(), AmountOfBottles = 14,
                     City = "Alaska", CompletedOrder = false, Customer = new CustomerModel { id = Guid.NewGuid().ToString(),
                     DateOfBirth = new DateTime(2000, 12, 12), BirthPlace = "California", City = "Alaska", FirstName = "John",
@@ -78,7 +78,7 @@ namespace SlijterijSjonnieLoper_version2.DAL
                     NumberOfBottlesOnStorage = 12, Price = 45.50, typesOfWhiskey = TypesOfWhiskeyModel.Rye,
                     NumberOfBottlesReserved = 12, ProductionSite = ProductionSite.LowLand,
                     LabelImage = new  MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))} },
-                     
+
                 new BestellingModel { id = Guid.NewGuid().ToString(), AmountOfBottles = 14,
                     City = "Alaska", CompletedOrder = false, Customer = new CustomerModel { id = Guid.NewGuid().ToString(),
                     DateOfBirth = new DateTime(2000, 12, 12), BirthPlace = "California", City = "Alaska", FirstName = "John",
@@ -90,7 +90,7 @@ namespace SlijterijSjonnieLoper_version2.DAL
                     NumberOfBottlesOnStorage = 12, Price = 45.50, typesOfWhiskey = TypesOfWhiskeyModel.Rye,
                     NumberOfBottlesReserved = 12, ProductionSite = ProductionSite.LowLand,
                     LabelImage = new  MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))} },
-               
+
                 new BestellingModel { id = Guid.NewGuid().ToString(), AmountOfBottles = 14,
                     City = "Alaska", CompletedOrder = false, Customer = new CustomerModel { id = Guid.NewGuid().ToString(),
                     DateOfBirth = new DateTime(2000, 12, 12), BirthPlace = "California", City = "Alaska", FirstName = "John",
@@ -107,21 +107,21 @@ namespace SlijterijSjonnieLoper_version2.DAL
             _customer = new List<CustomerModel>()
             {
                 new CustomerModel { id = Guid.NewGuid().ToString(), BirthPlace = "Alaska", City = "London",
-                DateOfBirth = new DateTime(1987, 12, 12), FirstName = "John", LastName = "Smith", HouseNumberAddition = "N.A", 
+                DateOfBirth = new DateTime(1987, 12, 12), FirstName = "John", LastName = "Smith", HouseNumberAddition = "N.A",
                 PostalNumber = "45AL", PrepositionName = "Von", StreetName = "Berkleylane", StreetNumber = 12},
-                       
+
                 new CustomerModel { id = Guid.NewGuid().ToString(), BirthPlace = "Alaska", City = "London",
                 DateOfBirth = new DateTime(1987, 12, 12), FirstName = "John", LastName = "Smith", HouseNumberAddition = "N.A",
                 PostalNumber = "45AL", PrepositionName = "Von", StreetName = "Berkleylane", StreetNumber = 12},
-                        
+
                 new CustomerModel { id = Guid.NewGuid().ToString(), BirthPlace = "Alaska", City = "London",
                 DateOfBirth = new DateTime(1987, 12, 12), FirstName = "John", LastName = "Smith", HouseNumberAddition = "N.A",
                 PostalNumber = "45AL", PrepositionName = "Von", StreetName = "Berkleylane", StreetNumber = 12},
-                     
+
                 new CustomerModel { id = Guid.NewGuid().ToString(), BirthPlace = "Alaska", City = "London",
                 DateOfBirth = new DateTime(1987, 12, 12), FirstName = "John", LastName = "Smith", HouseNumberAddition = "N.A",
                 PostalNumber = "45AL", PrepositionName = "Von", StreetName = "Berkleylane", StreetNumber = 12},
-                      
+
                 new CustomerModel { id = Guid.NewGuid().ToString(), BirthPlace = "Alaska", City = "London",
                 DateOfBirth = new DateTime(1987, 12, 12), FirstName = "John", LastName = "Smith", HouseNumberAddition = "N.A",
                 PostalNumber = "45AL", PrepositionName = "Von", StreetName = "Berkleylane", StreetNumber = 12},
@@ -131,25 +131,25 @@ namespace SlijterijSjonnieLoper_version2.DAL
             _employee = new List<EmployeeModel>()
             {
                 new EmployeeModel { id = Guid.NewGuid().ToString(), FirstName = "Lisa", LastName = "Wong", BirthDate = new DateTime(1994, 12, 12),
-                BirthPlace ="Shanghai", City = "Toronto", HouseNumberAddition = "N.A", PassWord = "password", UserName = "username", 
+                BirthPlace ="Shanghai", City = "Toronto", HouseNumberAddition = "N.A", PassWord = "password", UserName = "username",
                 PostalCode = "3525CL", PrepositionName = "N.A", RoleEmployee = RoleEmployeeModel.Security, StreetName = "Washingtonstreet",
                 StreetNumber = 89, WorkingSince = new DateTime(2019, 12,14)},
-                                
+
                 new EmployeeModel { id = Guid.NewGuid().ToString(), FirstName = "Lisa", LastName = "Wong", BirthDate = new DateTime(1994, 12, 12),
                 BirthPlace ="Shanghai", City = "Toronto", HouseNumberAddition = "N.A", PassWord = "password", UserName = "username",
                 PostalCode = "3525CL", PrepositionName = "N.A", RoleEmployee = RoleEmployeeModel.Security, StreetName = "Washingtonstreet",
                 StreetNumber = 89, WorkingSince = new DateTime(2019, 12,14)},
-                                
+
                 new EmployeeModel { id = Guid.NewGuid().ToString(), FirstName = "Lisa", LastName = "Wong", BirthDate = new DateTime(1994, 12, 12),
                 BirthPlace ="Shanghai", City = "Toronto", HouseNumberAddition = "N.A", PassWord = "password", UserName = "username",
                 PostalCode = "3525CL", PrepositionName = "N.A", RoleEmployee = RoleEmployeeModel.Security, StreetName = "Washingtonstreet",
                 StreetNumber = 89, WorkingSince = new DateTime(2019, 12,14)},
-                                
+
                 new EmployeeModel { id = Guid.NewGuid().ToString(), FirstName = "Lisa", LastName = "Wong", BirthDate = new DateTime(1994, 12, 12),
                 BirthPlace ="Shanghai", City = "Toronto", HouseNumberAddition = "N.A", PassWord = "password", UserName = "username",
                 PostalCode = "3525CL", PrepositionName = "N.A", RoleEmployee = RoleEmployeeModel.Security, StreetName = "Washingtonstreet",
                 StreetNumber = 89, WorkingSince = new DateTime(2019, 12,14)},
-                                
+
                 new EmployeeModel { id = Guid.NewGuid().ToString(), FirstName = "Lisa", LastName = "Wong", BirthDate = new DateTime(1994, 12, 12),
                 BirthPlace ="Shanghai", City = "Toronto", HouseNumberAddition = "N.A", PassWord = "password", UserName = "username",
                 PostalCode = "3525CL", PrepositionName = "N.A", RoleEmployee = RoleEmployeeModel.Security, StreetName = "Washingtonstreet",
@@ -158,25 +158,25 @@ namespace SlijterijSjonnieLoper_version2.DAL
             _whiskey = new List<WhiskeyModel>()
             {
                 new WhiskeyModel { id = Guid.NewGuid().ToString(), age = 21, alcoholPercentages = AlcoholPercentagesModel.thirthyeight,
-                IsRemoved = false, Name = "John Wickers", NumberOfBottlesOnStorage = 12, NumberOfBottlesReserved = 14, Price = 45.75, 
-                ProductionSite = ProductionSite.Sparrow , typesOfWhiskey = TypesOfWhiskeyModel.Bourbon , 
+                IsRemoved = false, Name = "John Wickers", NumberOfBottlesOnStorage = 12, NumberOfBottlesReserved = 14, Price = 45.75,
+                ProductionSite = ProductionSite.Sparrow , typesOfWhiskey = TypesOfWhiskeyModel.Bourbon ,
                 LabelImage = new MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))},
-                                
+
                 new WhiskeyModel { id = Guid.NewGuid().ToString(), age = 21, alcoholPercentages = AlcoholPercentagesModel.thirthyeight,
                 IsRemoved = false, Name = "John Wickers", NumberOfBottlesOnStorage = 12, NumberOfBottlesReserved = 14, Price = 45.75,
                 ProductionSite = ProductionSite.Sparrow , typesOfWhiskey = TypesOfWhiskeyModel.Bourbon ,
                 LabelImage = new MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))},
-                              
+
                 new WhiskeyModel { id = Guid.NewGuid().ToString(), age = 21, alcoholPercentages = AlcoholPercentagesModel.thirthyeight,
                 IsRemoved = false, Name = "John Wickers", NumberOfBottlesOnStorage = 12, NumberOfBottlesReserved = 14, Price = 45.75,
                 ProductionSite = ProductionSite.Sparrow , typesOfWhiskey = TypesOfWhiskeyModel.Bourbon ,
                 LabelImage = new MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))},
-                         
+
                 new WhiskeyModel { id = Guid.NewGuid().ToString(), age = 21, alcoholPercentages = AlcoholPercentagesModel.thirthyeight,
                 IsRemoved = false, Name = "John Wickers", NumberOfBottlesOnStorage = 12, NumberOfBottlesReserved = 14, Price = 45.75,
                 ProductionSite = ProductionSite.Sparrow , typesOfWhiskey = TypesOfWhiskeyModel.Bourbon ,
                 LabelImage = new MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))},
-                          
+
                 new WhiskeyModel { id = Guid.NewGuid().ToString(), age = 21, alcoholPercentages = AlcoholPercentagesModel.thirthyeight,
                 IsRemoved = false, Name = "John Wickers", NumberOfBottlesOnStorage = 12, NumberOfBottlesReserved = 14, Price = 45.75,
                 ProductionSite = ProductionSite.Sparrow , typesOfWhiskey = TypesOfWhiskeyModel.Bourbon ,
@@ -303,5 +303,13 @@ namespace SlijterijSjonnieLoper_version2.DAL
             GetWhiskeyTroughId = whiskey;
             return true;
         }
+
+#nullable enable
+        public List<WhiskeyModel>? SearchWhiskeys(string name)
+        {
+            return _whiskey.Where(a => a.Name.ToLower() == name.ToLower() || a.ProductionSite.ToString().ToLower() == name.ToLower() || a.alcoholPercentages.ToString().ToLower() == name.ToLower() || a.age.ToString().ToLower() == name.ToLower() || a.typesOfWhiskey.ToString().ToLower() == name.ToLower() || name == null).ToList();
+        }
+#nullable disable
+
     }
 }

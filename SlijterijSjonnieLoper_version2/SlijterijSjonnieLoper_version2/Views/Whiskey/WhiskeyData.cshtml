@@ -27,6 +27,38 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.ProductionSite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductionSite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alcoholPercentages)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alcoholPercentages)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.typesOfWhiskey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typesOfWhiskey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LabelImage)
+        </dt>
+
+        <dd>
+            @Html.ActionLink("Open label image", "ViewImage","ImageController", new { id = Model.id }, null)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Price)
         </dt>
 
@@ -61,6 +93,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Change whiskey data", "ChangeWhiskeyData", new { id = Model.id }) |
 </p>

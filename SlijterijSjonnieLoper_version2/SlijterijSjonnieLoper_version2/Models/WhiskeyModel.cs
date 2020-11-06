@@ -11,6 +11,7 @@ namespace SlijterijSjonnieLoper_version2.Models
 {
     public class WhiskeyModel
     {
+        [Key]
         public string id { get; set; }
 
         [Required]
@@ -60,11 +61,11 @@ namespace SlijterijSjonnieLoper_version2.Models
 
         public bool IsRemoved { get; set; }
 
-        public WhiskeyModel()
-        {
-            id = Guid.NewGuid().ToString();
-        //    Reservations = new List<CustomerModel>();
-        }
+        //public WhiskeyModel()
+        //{
+        //    this.id = Guid.NewGuid().ToString();
+        ////    Reservations = new List<CustomerModel>();
+        //}
 
     }
 }
