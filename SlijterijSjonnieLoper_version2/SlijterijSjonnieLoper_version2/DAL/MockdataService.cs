@@ -43,17 +43,12 @@ namespace SlijterijSjonnieLoper_version2.DAL
         {
             _bestelling = new List<BestellingModel>()
             {
-                new BestellingModel { id = Guid.NewGuid().ToString(), AmountOfBottles = 14,
-                    City = "Alaska", CompletedOrder = false, Customer = new CustomerModel { id = Guid.NewGuid().ToString(),
-                    DateOfBirth = new DateTime(2000, 12, 12), BirthPlace = "California", City = "Alaska", FirstName = "John",
-                    LastName = "Smith", HouseNumberAddition = "N.A", PostalNumber = "3525XA", PrepositionName = "N.A",
-                    StreetName = "Juxtonstreet", StreetNumber = 9}, DateOfCompletionOrder = new DateTime(2020, 12, 12),
-                    DateOfReservation = new DateTime(2019, 12, 12), HouseNumberAddition = "N.A", StreetNumber = 9,
-                    PostalCode = "3526XL", StreetName ="Grovestreet", Whiskey = new WhiskeyModel { id = Guid.NewGuid().ToString(),
-                    age = 12, alcoholPercentages = AlcoholPercentagesModel.fortysix, IsRemoved = false, Name = "Lambare",
-                    NumberOfBottlesOnStorage = 12, Price = 45.50, typesOfWhiskey = TypesOfWhiskeyModel.Rye,
-                    NumberOfBottlesReserved = 12, ProductionSite = ProductionSite.LowLand,
-                    LabelImage = new  MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))} } ,
+                //new BestellingModel { id = Guid.NewGuid().ToString(), AmountOfBottles = 14,
+                //    City = "Alaska", CompletedOrder = false, Customer = _customer.FirstOrDefault(a => a.FirstName == "John"), DateOfCompletionOrder = new DateTime(2020, 12, 12),
+                //    DateOfReservation = new DateTime(2019, 12, 12), HouseNumberAddition = "N.A", StreetNumber = 9,
+                //    PostalCode = "3526XL", StreetName ="Grovestreet", Whiskey = _whiskey.FirstOrDefault(a => a.Name == "John Wickers")} ,
+
+                // werkt niet
 
                 new BestellingModel { id = Guid.NewGuid().ToString(), AmountOfBottles = 14,
                     City = "Alaska", CompletedOrder = false, Customer = new CustomerModel { id = Guid.NewGuid().ToString(),

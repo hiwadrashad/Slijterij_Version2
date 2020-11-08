@@ -293,10 +293,10 @@
     <Content Include="Views\Whiskey\AddNewWhiskey.cshtml" />
     <Content Include="Views\Whiskey\ChangeWhiskeyData.cshtml" />
     <Content Include="Views\Whiskey\WhiskeySearchOverview.cshtml" />
+    <Content Include="Views\Image\ViewImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Others\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
