@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SlijterijSjonnieLoper_version2.DAL;
 using SlijterijSjonnieLoper_version2.Models;
+using SlijterijSjonnieLoper_version2.ViewModels;
 
 namespace SlijterijSjonnieLoper_version2.Controllers
 {
@@ -26,16 +27,28 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         // GET: ReservationAdd/Create
         public ActionResult GenerateNewReservation()
         {
-            return View();
+            ViewModels.GenerateReservationViewModel viewModel = new ViewModels.GenerateReservationViewModel();
+            viewModel.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+            viewModel.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+            foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+            {
+                viewModel.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + item.LastName, Value = item.FirstName + item.LastName });
+            }
+            foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+            {
+                viewModel.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+            }
+            return View(viewModel);
         }
 
         // POST: ReservationAdd/Create
         [HttpPost]
-        public ActionResult GenerateNewReservation(BestellingModel bestelling)
+        public ActionResult GenerateNewReservation(GenerateReservationViewModel bestelling)
         {
             try
             {
                 // TODO: Add insert logic here
+                bestelling.bestellingModel.WhiskeyAndAmount = new Dictionary<WhiskeyModel, int>() { bestelling.StoreChoiceWhiskeyFromDropDownList, "" };
                 MockdataService.GetMockdataService().AddBestelling(bestelling);
                 return RedirectToAction("ReservationOverview");
             }

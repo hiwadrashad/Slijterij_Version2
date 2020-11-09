@@ -35,15 +35,31 @@ namespace SlijterijSjonnieLoper_version2.Controllers
 
         // POST: Whiskey/Create
         [HttpPost]
-        public ActionResult AddNewWhiskey(WhiskeyModel whiskey, HttpPostedFileBase StoredImage)
+        public ActionResult AddNewWhiskey(WhiskeyModel whiskey, HttpPostedFileBase StoredImage, string submit)
         {
             
             try
             {
-                whiskey.LabelImage = StoredImage;
-                // TODO: Add insert logic here
-                MockdataService.GetMockdataService().AddWhiskey(whiskey);
-                return RedirectToAction("WhiskeyOverView");
+                if (submit == "Create")
+                {
+
+                    whiskey.LabelImage = StoredImage;
+                    // TODO: Add insert logic here
+                    MockdataService.GetMockdataService().AddWhiskey(whiskey);
+                    return RedirectToAction("WhiskeyOverView");
+                }
+                else if (submit == "CreateAnotherOne")
+                {
+                    whiskey.LabelImage = StoredImage;
+                    // TODO: Add insert logic here
+                    MockdataService.GetMockdataService().AddWhiskey(whiskey);
+                    return RedirectToAction("AddNewWhiskey");
+
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {

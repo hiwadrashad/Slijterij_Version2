@@ -12,9 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AmountOfBottles)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.DateOfReservation)
         </th>
         <th>
@@ -44,9 +41,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.AmountOfBottles)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.DateOfReservation)
         </td>
         <td>
@@ -71,9 +65,9 @@
             @Html.DisplayFor(modelItem => item.PostalCode)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Edit reservation", "ChangeDataReservation", new { id=item.id }) |
+            @Html.ActionLink("See details reservation", "ReservationData", new { id=item.id }) |
+            @Html.ActionLink("Remove reservation", "RemoveReservation", new { id=item.id })
         </td>
     </tr>
 }

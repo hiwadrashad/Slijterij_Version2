@@ -11,18 +11,14 @@ namespace SlijterijSjonnieLoper_version2.Models
         [Key]
         public string id { get; set; }
 
-        [Required]
  
-        public WhiskeyModel Whiskey { get; set; }
+ 
+        public Dictionary<WhiskeyModel,int> WhiskeyAndAmount { get; set; }
 
         [Required]
 
         public CustomerModel Customer { get; set; }
 
-        [Required]
-        [Display(Name = "Amount of bottles")]
-
-        public int AmountOfBottles { get; set; }
 
         [Display(Name = "Date of order reservation")]
 
