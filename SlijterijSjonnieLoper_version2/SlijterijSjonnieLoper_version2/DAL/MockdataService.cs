@@ -38,9 +38,12 @@ namespace SlijterijSjonnieLoper_version2.DAL
 
             return _MockdataService;
         }
+        Dictionary<WhiskeyModel, int> smthng = new Dictionary<WhiskeyModel, int>();
+       
 
         public void InitData()
         {
+            smthng.Add(new WhiskeyModel { id = Guid.NewGuid().ToString() }, 12);
             _bestelling = new List<BestellingModel>()
             {
                 //new BestellingModel { id = Guid.NewGuid().ToString(), AmountOfBottles = 14,
@@ -49,54 +52,55 @@ namespace SlijterijSjonnieLoper_version2.DAL
                 //    PostalCode = "3526XL", StreetName ="Grovestreet", Whiskey = _whiskey.FirstOrDefault(a => a.Name == "John Wickers")} ,
 
                 // werkt niet
+             
 
-                new BestellingModel { id = Guid.NewGuid().ToString(), AmountOfBottles = 14,
+                new BestellingModel { id = Guid.NewGuid().ToString(), WhiskeyAndAmount =  new Dictionary<WhiskeyModel, int>() {{ new WhiskeyModel { id = Guid.NewGuid().ToString(),
+                    age = 12, alcoholPercentages = AlcoholPercentagesModel.fortysix, IsRemoved = false, Name = "Lambare",
+                    NumberOfBottlesOnStorage = 12, Price = 45.50, typesOfWhiskey = TypesOfWhiskeyModel.Rye,
+                    NumberOfBottlesReserved = 12, ProductionSite = ProductionSite.LowLand,
+                    LabelImage = new  MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))}, 12 } },
                     City = "Alaska", CompletedOrder = false, Customer = new CustomerModel { id = Guid.NewGuid().ToString(),
                     DateOfBirth = new DateTime(2000, 12, 12), BirthPlace = "California", City = "Alaska", FirstName = "John",
                     LastName = "Smith", HouseNumberAddition = "N.A", PostalNumber = "3525XA", PrepositionName = "N.A",
                     StreetName = "Juxtonstreet", StreetNumber = 9}, DateOfCompletionOrder = new DateTime(2020, 12, 12),
                     DateOfReservation = new DateTime(2019, 12, 12), HouseNumberAddition = "N.A", StreetNumber = 9,
-                    PostalCode = "3526XL", StreetName ="Grovestreet", Whiskey = new WhiskeyModel { id = Guid.NewGuid().ToString(),
+                    PostalCode = "3526XL", StreetName ="Grovestreet" },
+
+                new BestellingModel { id = Guid.NewGuid().ToString(), WhiskeyAndAmount =  new Dictionary<WhiskeyModel, int>() {{ new WhiskeyModel { id = Guid.NewGuid().ToString(),
                     age = 12, alcoholPercentages = AlcoholPercentagesModel.fortysix, IsRemoved = false, Name = "Lambare",
                     NumberOfBottlesOnStorage = 12, Price = 45.50, typesOfWhiskey = TypesOfWhiskeyModel.Rye,
                     NumberOfBottlesReserved = 12, ProductionSite = ProductionSite.LowLand,
-                    LabelImage = new  MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))} },
-
-                new BestellingModel { id = Guid.NewGuid().ToString(), AmountOfBottles = 14,
+                    LabelImage = new  MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))}, 12 } },
                     City = "Alaska", CompletedOrder = false, Customer = new CustomerModel { id = Guid.NewGuid().ToString(),
                     DateOfBirth = new DateTime(2000, 12, 12), BirthPlace = "California", City = "Alaska", FirstName = "John",
                     LastName = "Smith", HouseNumberAddition = "N.A", PostalNumber = "3525XA", PrepositionName = "N.A",
                     StreetName = "Juxtonstreet", StreetNumber = 9}, DateOfCompletionOrder = new DateTime(2020, 12, 12),
                     DateOfReservation = new DateTime(2019, 12, 12), HouseNumberAddition = "N.A", StreetNumber = 9,
-                    PostalCode = "3526XL", StreetName ="Grovestreet", Whiskey = new WhiskeyModel { id = Guid.NewGuid().ToString(),
+                    PostalCode = "3526XL", StreetName ="Grovestreet" },
+
+               new BestellingModel { id = Guid.NewGuid().ToString(), WhiskeyAndAmount =  new Dictionary<WhiskeyModel, int>() {{ new WhiskeyModel { id = Guid.NewGuid().ToString(),
                     age = 12, alcoholPercentages = AlcoholPercentagesModel.fortysix, IsRemoved = false, Name = "Lambare",
                     NumberOfBottlesOnStorage = 12, Price = 45.50, typesOfWhiskey = TypesOfWhiskeyModel.Rye,
                     NumberOfBottlesReserved = 12, ProductionSite = ProductionSite.LowLand,
-                    LabelImage = new  MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))} },
-
-                new BestellingModel { id = Guid.NewGuid().ToString(), AmountOfBottles = 14,
+                    LabelImage = new  MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))}, 12 } },
                     City = "Alaska", CompletedOrder = false, Customer = new CustomerModel { id = Guid.NewGuid().ToString(),
                     DateOfBirth = new DateTime(2000, 12, 12), BirthPlace = "California", City = "Alaska", FirstName = "John",
                     LastName = "Smith", HouseNumberAddition = "N.A", PostalNumber = "3525XA", PrepositionName = "N.A",
                     StreetName = "Juxtonstreet", StreetNumber = 9}, DateOfCompletionOrder = new DateTime(2020, 12, 12),
                     DateOfReservation = new DateTime(2019, 12, 12), HouseNumberAddition = "N.A", StreetNumber = 9,
-                    PostalCode = "3526XL", StreetName ="Grovestreet", Whiskey = new WhiskeyModel { id = Guid.NewGuid().ToString(),
+                    PostalCode = "3526XL", StreetName ="Grovestreet" },
+
+               new BestellingModel { id = Guid.NewGuid().ToString(), WhiskeyAndAmount =  new Dictionary<WhiskeyModel, int>() {{ new WhiskeyModel { id = Guid.NewGuid().ToString(),
                     age = 12, alcoholPercentages = AlcoholPercentagesModel.fortysix, IsRemoved = false, Name = "Lambare",
                     NumberOfBottlesOnStorage = 12, Price = 45.50, typesOfWhiskey = TypesOfWhiskeyModel.Rye,
                     NumberOfBottlesReserved = 12, ProductionSite = ProductionSite.LowLand,
-                    LabelImage = new  MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))} },
-
-                new BestellingModel { id = Guid.NewGuid().ToString(), AmountOfBottles = 14,
+                    LabelImage = new  MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))}, 12 } },
                     City = "Alaska", CompletedOrder = false, Customer = new CustomerModel { id = Guid.NewGuid().ToString(),
                     DateOfBirth = new DateTime(2000, 12, 12), BirthPlace = "California", City = "Alaska", FirstName = "John",
                     LastName = "Smith", HouseNumberAddition = "N.A", PostalNumber = "3525XA", PrepositionName = "N.A",
                     StreetName = "Juxtonstreet", StreetNumber = 9}, DateOfCompletionOrder = new DateTime(2020, 12, 12),
                     DateOfReservation = new DateTime(2019, 12, 12), HouseNumberAddition = "N.A", StreetNumber = 9,
-                    PostalCode = "3526XL", StreetName ="Grovestreet", Whiskey = new WhiskeyModel { id = Guid.NewGuid().ToString(),
-                    age = 12, alcoholPercentages = AlcoholPercentagesModel.fortysix, IsRemoved = false, Name = "Lambare",
-                    NumberOfBottlesOnStorage = 12, Price = 45.50, typesOfWhiskey = TypesOfWhiskeyModel.Rye,
-                    NumberOfBottlesReserved = 12, ProductionSite = ProductionSite.LowLand,
-                    LabelImage = new  MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))} }
+                    PostalCode = "3526XL", StreetName ="Grovestreet" },
 
             };
             _customer = new List<CustomerModel>()
@@ -305,6 +309,16 @@ namespace SlijterijSjonnieLoper_version2.DAL
             return _whiskey.Where(a => a.Name.ToLower() == name.ToLower() || a.ProductionSite.ToString().ToLower() == name.ToLower() || a.alcoholPercentages.ToString().ToLower() == name.ToLower() || a.age.ToString().ToLower() == name.ToLower() || a.typesOfWhiskey.ToString().ToLower() == name.ToLower() || name == null).ToList();
         }
 #nullable disable
+
+        public WhiskeyModel GetWhiskeyTroughName(string name)
+        {
+            return _whiskey.Where(a => a.Name == name).FirstOrDefault();
+        }
+
+        public CustomerModel GetCustomerTroughFirstAndLastName(string firstname, string lastname)
+        {
+            return _customer.Where(a => a.FirstName == firstname && a.LastName == lastname).FirstOrDefault();
+        }
 
     }
 }

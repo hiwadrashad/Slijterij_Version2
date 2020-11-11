@@ -21,12 +21,13 @@ namespace SlijterijSjonnieLoper_version2.Models
 
 
         [Display(Name = "Date of order reservation")]
+        [DataType(DataType.Date)]
 
-        public DateTime DateOfReservation { get; set; }
+        public DateTime? DateOfReservation { get; set; }
 
         [Display(Name = "Date of completion order")]
-
-        public DateTime DateOfCompletionOrder { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? DateOfCompletionOrder { get; set; }
 
         [Required]
         [Display(Name = "Order Completed?")]

@@ -15,6 +15,7 @@ namespace SlijterijSjonnieLoper_version2.Models
 
         [Required]
         [Display(Name = "Date of birth")]
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
         [Required]

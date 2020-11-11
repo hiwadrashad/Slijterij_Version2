@@ -49,6 +49,7 @@ namespace SlijterijSjonnieLoper_version2.Models
 
         [Required]
         [Display(Name = "Birth date")]
+        [DataType(DataType.Date)]
 
         public DateTime BirthDate { get; set; }
 
@@ -68,7 +69,7 @@ namespace SlijterijSjonnieLoper_version2.Models
         public string PassWord { get; set; }
 
         [Display(Name = "Working since")]
-
+        [DataType(DataType.Date)]
         public DateTime WorkingSince { get; set; }
 
         [Display(Name = "Profile picture")]

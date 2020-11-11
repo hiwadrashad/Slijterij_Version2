@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace SlijterijSjonnieLoper_version2.ViewModels
 {
-    public class GenerateReservationViewModel
+    public class ChangeDataReservationViewModel
     {
         public List<SelectListItem> GenerateDropDownDataFromWhiskey { get; set; }
 
@@ -26,7 +26,5 @@ namespace SlijterijSjonnieLoper_version2.ViewModels
         public string StoreChoiceCustomerFromDropDownList { get; set; }
 
         public Models.BestellingModel bestellingModel { get; set; }
-
-
     }
 }

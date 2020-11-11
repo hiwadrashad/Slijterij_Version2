@@ -35,6 +35,9 @@
         <th>
             @Html.DisplayNameFor(model => model.PostalCode)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer)
+        </th>
         <th></th>
     </tr>
 
@@ -62,7 +65,7 @@
             @Html.DisplayFor(modelItem => item.HouseNumberAddition)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PostalCode)
+            @Html.DisplayFor(modelItem => item.Customer.FirstName)
         </td>
         <td>
             @Html.ActionLink("Edit reservation", "ChangeDataReservation", new { id=item.id }) |
