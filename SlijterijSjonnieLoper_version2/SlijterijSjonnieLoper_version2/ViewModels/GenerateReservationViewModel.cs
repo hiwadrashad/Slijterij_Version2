@@ -13,6 +13,9 @@ namespace SlijterijSjonnieLoper_version2.ViewModels
 
         public List<SelectListItem> GenerateDropDownDataFromCustomer { get; set; }
 
+        public List<string> GenerateDropDownDataFromWhiskeyForJavascript { get; set; }
+
+
         [Required]
         [Display(Name = "Whiskey")]
         public string StoreChoiceWhiskeyFromDropDownList { get; set; }

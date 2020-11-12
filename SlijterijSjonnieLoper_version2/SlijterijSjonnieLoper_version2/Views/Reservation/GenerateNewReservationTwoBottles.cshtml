@@ -1,9 +1,8 @@
-﻿@model SlijterijSjonnieLoper_version2.ViewModels.GenerateReservationViewModel
+﻿@model SlijterijSjonnieLoper_version2.ViewModels.GenerateReservationTwoBottlesViewModel
 
 @{
     ViewBag.Title = "GenerateNewReservation";
 }
-
 
 <h2>GenerateNewReservation</h2>
 
@@ -11,12 +10,12 @@
 {
     @Html.AntiForgeryToken()
 
-<div   class="form-horizontal">
-    <h4></h4>
+<div class="form-horizontal">
+    <h4>BestellingModel</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div id="appendtothis" >
-    <div class="form-group">
+
+    <div id="appendtothis" class="form-group">
         @Html.LabelFor(model => model.StoreChoiceWhiskeyFromDropDownList, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.StoreChoiceWhiskeyFromDropDownList, (List<SelectListItem>)Model.GenerateDropDownDataFromWhiskey, "Select your whiskey")
@@ -24,7 +23,7 @@
         </div>
     </div>
 
-    <div  class="form-group">
+    <div class="form-group">
         @Html.LabelFor(model => model.StoreChoiceAmountOfBottlesWhiskey, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.StoreChoiceAmountOfBottlesWhiskey, new { htmlAttributes = new { @class = "form-control" } })
@@ -32,12 +31,27 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input id="buttonid" name="command" type="button" value="Create another one" class="btn btn-default" />
+    <div id="appendtothis" class="form-group">
+        @Html.LabelFor(model => model.StoreChoiceWhiskeyFromDropDownList, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.StoreChoiceAmountOfBottlesWhiskey2, (List<SelectListItem>)Model.GenerateDropDownDataFromWhiskey, "Select your whiskey")
+            @Html.ValidationMessageFor(model => model.StoreChoiceWhiskeyFromDropDownList, "", new { @class = "text-danger" })
         </div>
     </div>
 
+    <div class="form-group">
+        @Html.LabelFor(model => model.StoreChoiceAmountOfBottlesWhiskey, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StoreChoiceAmountOfBottlesWhiskey2, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.StoreChoiceAmountOfBottlesWhiskey, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input name="command" type="submit" value="Create another whiskey" class="btn btn-default" />
+        </div>
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.StoreChoiceCustomerFromDropDownList, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -119,65 +133,6 @@
         </div>
     </div>
 
-     </div>
 
 </div>
 }
-<script>
-    var amountoftimesclicked = 0;
-
-document.getElementById("buttonid").onclick =
-    function () {
-
-        amountoftimesclicked = amountoftimesclicked + 1;
-        if (amountoftimesclicked <= 5) {
-
-            var values = [];
-            @foreach (var item in Model.GenerateDropDownDataFromWhiskeyForJavascript)
-            { 
-            @:values.push("@item");
-            }
-            var firstdiv = document.createElement("div");
-            var textboxvalue = document.createElement("input")
-            textboxvalue.name = amountoftimesclicked.toString() + "amountofbottle";
-            var seconddiv = document.createElement("div");
-            var a = document.getElementById("sdaf");
-
-            var select = document.createElement("select");
-            select.name = amountoftimesclicked.toString() + "whiskey"
-            select.name = "pets";
-            select.id = "pets"
-
-            for (const val of values) {
-                var option = document.createElement("option");
-                option.value = val;
-                option.text = val.charAt(0).toUpperCase() + val.slice(1);
-                select.appendChild(option);
-            }
-
-            var label = document.createElement("label");
-            var labelinput = document.createElement("label");
-            label.innerHTML = "Choose your whiskey "
-            label.htmlFor = "pets";
-            labelinput.innerHTML = "Choose the amount of bottles ";
-            seconddiv.appendChild(labelinput).appendChild(textboxvalue);
-            seconddiv.classList.add("form-group");
-            firstdiv.appendChild(label).appendChild(select);
-            firstdiv.classList.add("form-group");
-            // firstdiv.id = "divid"
-            //seconddiv.appendChild(firstdiv);
-            //seconddiv.classList.add("col-md-offset-2", "col-md-10");
-            document.getElementById("appendtothis").prepend(firstdiv);
-            document.getElementById("appendtothis").prepend(seconddiv);
-            //var appenditem = document.getElementById("appendtothis").cloneNode;
-            //var basediv = document.createElement("div")
-            //var inputelement = document.createElement("input");
-            //basediv.appendChild(inputelement);
-            //appenditem.appendChild(basediv);
-        }
-        else
-        {
-            alert("Maximum allowed whiskey's per person is 5");
-        }
-    }
-</script>

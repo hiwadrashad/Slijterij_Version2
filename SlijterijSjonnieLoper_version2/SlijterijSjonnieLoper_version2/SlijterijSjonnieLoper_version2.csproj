@@ -206,10 +206,10 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\ChangeDataReservationViewModel.cs" />
-    <Compile Include="ViewModels\ChangeDataReservationViewModelFiveBottles.cs" />
-    <Compile Include="ViewModels\ChangeDataReservationViewModelFourBottles.cs" />
-    <Compile Include="ViewModels\ChangeDataReservationViewModelThreeBottles.cs" />
-    <Compile Include="ViewModels\ChangeDataReservationViewModelTwoBottles.cs" />
+    <Compile Include="ViewModels\ChangeDataReservationViewModelFiveBottlesViewModel.cs" />
+    <Compile Include="ViewModels\ChangeDataReservationViewModelFourBottlesViewModel.cs" />
+    <Compile Include="ViewModels\ChangeDataReservationViewModelThreeBottlesViewModel.cs" />
+    <Compile Include="ViewModels\ChangeDataReservationViewModelTwoBottlesViewModel.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\ConfigureTwoFactorViewModel.cs" />
     <Compile Include="ViewModels\ExternalLoginConfirmationViewModel.cs" />
@@ -217,11 +217,11 @@
     <Compile Include="ViewModels\FactorViewModel.cs" />
     <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\ForgotViewModel.cs" />
-    <Compile Include="ViewModels\GenerateReservationFiveBottles.cs" />
-    <Compile Include="ViewModels\GenerateReservationFourBottles.cs" />
+    <Compile Include="ViewModels\GenerateReservationFiveBottlesViewModel.cs" />
+    <Compile Include="ViewModels\GenerateReservationFourBottlesViewModel.cs" />
     <Compile Include="ViewModels\GenerateReservationTwoBottlesViewModel.cs" />
     <Compile Include="ViewModels\GenerateReservationViewModel.cs" />
-    <Compile Include="ViewModels\GeneraterReservationThreeBottles.cs" />
+    <Compile Include="ViewModels\GeneraterReservationThreeBottlesViewModel.cs" />
     <Compile Include="ViewModels\IndexViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ManageLoginsViewModel.cs" />
@@ -306,6 +306,7 @@
     <Content Include="Views\Reservation\GenerateNewReservation.cshtml" />
     <Content Include="Views\Reservation\ChangeDataReservation.cshtml" />
     <Content Include="Views\Reservation\RemoveReservation.cshtml" />
+    <Content Include="Views\Reservation\GenerateNewReservationTwoBottles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -333,6 +334,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="TypeScripts\AskForNewWhiskeyCreation.ts" />
+    <TypeScriptCompile Include="TypeScripts\file1.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
