@@ -7,7 +7,7 @@
 
 <h2>GenerateNewReservation</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("GenerateNewReservation", "Reservation", FormMethod.Post, new { enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
 
@@ -34,7 +34,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input id="buttonid" name="command" type="button" value="Create another one" class="btn btn-default" />
+            <input id="buttonid" name="command" type="submit" value="Create another one" class="btn btn-default" />
         </div>
     </div>
 
@@ -76,7 +76,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.bestellingModel.City, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.bestellingModel.City, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.bestellingModel.City, new { htmlAttributes = new { @class = "form-control", Value = "tehsij" } })
             @Html.ValidationMessageFor(model => model.bestellingModel.City, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -124,7 +124,7 @@
 </div>
 }
 <script>
-    var amountoftimesclicked = 0;
+    @*var amountoftimesclicked = 0;
 
 document.getElementById("buttonid").onclick =
     function () {
@@ -138,15 +138,12 @@ document.getElementById("buttonid").onclick =
             @:values.push("@item");
             }
             var firstdiv = document.createElement("div");
-            var textboxvalue = document.createElement("input")
-            textboxvalue.name = amountoftimesclicked.toString() + "amountofbottle";
             var seconddiv = document.createElement("div");
-            var a = document.getElementById("sdaf");
-
+            var textboxvalue = document.createElement("input")
+            textboxvalue.name = "amountofbottles" + amountoftimesclicked.toString();
             var select = document.createElement("select");
-            select.name = amountoftimesclicked.toString() + "whiskey"
-            select.name = "pets";
-            select.id = "pets"
+            select.name = "whiskey" + amountoftimesclicked.toString();
+ 
 
             for (const val of values) {
                 var option = document.createElement("option");
@@ -157,18 +154,19 @@ document.getElementById("buttonid").onclick =
 
             var label = document.createElement("label");
             var labelinput = document.createElement("label");
-            label.innerHTML = "Choose your whiskey "
-            label.htmlFor = "pets";
-            labelinput.innerHTML = "Choose the amount of bottles ";
+            label.innerHTML = "Whiskey "
+            labelinput.innerHTML = "Amount of bottles ";
+
             seconddiv.appendChild(labelinput).appendChild(textboxvalue);
             seconddiv.classList.add("form-group");
             firstdiv.appendChild(label).appendChild(select);
             firstdiv.classList.add("form-group");
+            document.getElementById("appendtothis").prepend(seconddiv);
+            document.getElementById("appendtothis").prepend(firstdiv);
+
             // firstdiv.id = "divid"
             //seconddiv.appendChild(firstdiv);
             //seconddiv.classList.add("col-md-offset-2", "col-md-10");
-            document.getElementById("appendtothis").prepend(firstdiv);
-            document.getElementById("appendtothis").prepend(seconddiv);
             //var appenditem = document.getElementById("appendtothis").cloneNode;
             //var basediv = document.createElement("div")
             //var inputelement = document.createElement("input");
@@ -179,5 +177,5 @@ document.getElementById("buttonid").onclick =
         {
             alert("Maximum allowed whiskey's per person is 5");
         }
-    }
+    }*@
 </script>

@@ -13,26 +13,40 @@ namespace SlijterijSjonnieLoper_version2.ViewModels
 
         public List<SelectListItem> GenerateDropDownDataFromCustomer { get; set; }
 
-        [Required]
+
+        [Display(Name = "Whiskey")]
         public string StoreChoiceWhiskeyFromDropDownList { get; set; }
 
-        [Required]
-        public string StoreChoiceAmountOfBottlesWhiskeyFromDropDownList { get; set; }
+        [Display(Name = "Amount of bottles")]
+        public int StoreChoiceAmountOfBottlesWhiskey { get; set; }
+
+        [Display(Name = "Whiskey")]
 
         public string StoreChoiceWhiskeyFromDropDownList2 { get; set; }
 
-        public string StoreChoiceAmountOfBottlesWhiskey2 { get; set; }
+        [Display(Name = "Amount of bottles")]
+
+        public int StoreChoiceAmountOfBottlesWhiskey2 { get; set; }
+
+        [Display(Name = "Whiskey")]
 
         public string StoreChoiceWhiskeyFromDropDownList3 { get; set; }
 
-        public string StoreChoiceAmountOfBottlesWhiskey3 { get; set; }
+        [Display(Name = "Amount of bottles")]
 
+        public int StoreChoiceAmountOfBottlesWhiskey3 { get; set; }
+
+        [Display(Name = "Whiskey")]
 
         public string StoreChoiceWhiskeyFromDropDownList4 { get; set; }
 
-        public string StoreChoiceAmountOfBottlesWhiskey4 { get; set; }
+        [Display(Name = "Amount of bottles")]
+
+        public int StoreChoiceAmountOfBottlesWhiskey4 { get; set; }
+
 
         [Required]
+        [Display(Name = "Customer")]
         public string StoreChoiceCustomerFromDropDownList { get; set; }
 
         public Models.BestellingModel bestellingModel { get; set; }

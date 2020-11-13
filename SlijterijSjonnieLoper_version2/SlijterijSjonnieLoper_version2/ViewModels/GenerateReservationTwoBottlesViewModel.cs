@@ -13,17 +13,23 @@ namespace SlijterijSjonnieLoper_version2.ViewModels
 
         public List<SelectListItem> GenerateDropDownDataFromCustomer { get; set; }
 
-        [Required]
+
+        [Display(Name = "Whiskey")]
         public string StoreChoiceWhiskeyFromDropDownList { get; set; }
 
-        [Required]
-        public string StoreChoiceAmountOfBottlesWhiskey { get; set; }
+        [Display(Name = "Amount of bottles")]
+        public int StoreChoiceAmountOfBottlesWhiskey { get; set; }
+
+        [Display(Name = "Whiskey")]
 
         public string StoreChoiceWhiskeyFromDropDownList2 { get; set; }
 
-        public string StoreChoiceAmountOfBottlesWhiskey2 { get; set; }
+        [Display(Name = "Amount of bottles")]
+
+        public int StoreChoiceAmountOfBottlesWhiskey2 { get; set; }
 
         [Required]
+        [Display(Name = "Customer")]
         public string StoreChoiceCustomerFromDropDownList { get; set; }
 
         public Models.BestellingModel bestellingModel { get; set; }
