@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using SlijterijSjonnieLoper_version2.DAL;
+using SlijterijSjonnieLoper_version2.Extensions;
 using SlijterijSjonnieLoper_version2.Models;
 using SlijterijSjonnieLoper_version2.ViewModels;
 
@@ -81,6 +83,22 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             return View(viewModel3);
         }
 
+        public ActionResult GenerateNewReservationFourBottles()
+        {
+            GenerateReservationFourBottlesViewModel viewModel4 = new GenerateReservationFourBottlesViewModel();
+            viewModel4.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+            viewModel4.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+            foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+            {
+                viewModel4.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+            }
+            foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+            {
+                viewModel4.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+            }
+
+            return View(viewModel4);
+        }
 
         // POST: ReservationAdd/Create
         [HttpPost]
@@ -141,6 +159,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
                     //var fullname = bestelling.StoreChoiceCustomerFromDropDownList;
                     //var firstname = fullname.Split(' ')[0];
                     //var lastname = fullname.Split(' ')[1];
+
                     bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
                     bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
                     foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
@@ -160,7 +179,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
                     // MockdataService.GetMockdataService().AddBestelling(bestelling);
                     return RedirectToAction("ReservationOverview");
                 }
-                else if (command == "Create another one")
+                else
                 {
                     bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
                     bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
@@ -174,22 +193,11 @@ namespace SlijterijSjonnieLoper_version2.Controllers
                     }
                     return RedirectToAction("GenerateNewReservationTwoBottles");
                 }
-                else
-                {
-                    bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
-                    bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
-                    foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
-                    {
-                        bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
-                    }
-                    foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
-                    {
-                        bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
-                    }
-                    return View();
-                }
+
             }
-            catch
+#pragma warning disable CS0168 // Variable is declared but never used
+            catch (NullReferenceException ex)
+#pragma warning restore CS0168 // Variable is declared but never used
             {
                 bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
                 bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
@@ -201,7 +209,42 @@ namespace SlijterijSjonnieLoper_version2.Controllers
                 {
                     bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
                 }
-                return View();
+                this.AddNotification("All values should be filled in", NotificationType.ERROR);
+                return View(bestelling);
+            }
+#pragma warning disable CS0168 // Variable is declared but never used
+            catch (ArgumentNullException ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+            {
+                bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+                bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+                foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+                {
+                    bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+                }
+                foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+                {
+                    bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+                }
+                this.AddNotification("All values should be filled in", NotificationType.ERROR);
+                return View(bestelling);
+            }
+#pragma warning disable CS0168 // Variable is declared but never used
+            catch (Exception ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+            {
+                bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+                bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+                foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+                {
+                    bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+                }
+                foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+                {
+                    bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+                }
+                this.AddNotification("An error occured", NotificationType.ERROR);
+                return View(bestelling);
             }
         }
 
@@ -209,33 +252,18 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         [HttpPost]
         public ActionResult GenerateNewReservationTwoBottles(GenerateReservationTwoBottlesViewModel bestelling, string command)
         {
-            try
+            if (command == "Create")
             {
-                if (command == "Create")
+                try
                 {
-                    bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
-                    bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
-                    foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
-                    {
-                        bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
-                    }
-                    foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
-                    {
-                        bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
-                    }
                     bestelling.bestellingModel.WhiskeyAndAmount = new Dictionary<WhiskeyModel, int> { { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList), bestelling.StoreChoiceAmountOfBottlesWhiskey }, { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList2), bestelling.StoreChoiceAmountOfBottlesWhiskey2 } };
-
-                    //var fullname = bestelling.StoreChoiceCustomerFromDropDownList;
-                    //var firstname = fullname.Split(' ')[0];
-                    //var lastname = fullname.Split(' ')[1];
                     bestelling.bestellingModel.Customer = MockdataService.GetMockdataService().GetCustomer(bestelling.StoreChoiceCustomerFromDropDownList);
                     MockdataService.GetMockdataService().AddBestelling(bestelling.bestellingModel);
-                    // TODO: Add insert logic here
-                    // bestelling.bestellingModel.WhiskeyAndAmount = new Dictionary<WhiskeyModel, int>() { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList),Int32.Parse( bestelling.StoreChoiceWhiskeyFromDropDownList )};
-                    // MockdataService.GetMockdataService().AddBestelling(bestelling);
                     return RedirectToAction("ReservationOverview");
                 }
-                else if (command == "Create another one")
+#pragma warning disable CS0168 // Variable is declared but never used
+                catch (ArgumentException ex)
+#pragma warning restore CS0168 // Variable is declared but never used
                 {
                     bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
                     bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
@@ -247,9 +275,12 @@ namespace SlijterijSjonnieLoper_version2.Controllers
                     {
                         bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
                     }
-                    return RedirectToAction("GenerateNewReservationThreeBottles");
+                    this.AddNotification("You can't add duplicate whiskey's", NotificationType.ERROR);
+                    return View(bestelling);
                 }
-                else
+#pragma warning disable CS0168 // Variable is declared but never used
+                catch (NullReferenceException ex)
+#pragma warning restore CS0168 // Variable is declared but never used
                 {
                     bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
                     bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
@@ -261,28 +292,434 @@ namespace SlijterijSjonnieLoper_version2.Controllers
                     {
                         bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
                     }
-                    return View();
+                    this.AddNotification("All values should be filled in", NotificationType.ERROR);
+                    return View(bestelling);
+                }
+
+#pragma warning disable CS0168 // Variable is declared but never used
+                catch (Exception ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+                {
+                    bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+                    bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+                    foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+                    }
+                    foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+                    }
+                    this.AddNotification("There was an error", NotificationType.ERROR);
+                    return View(bestelling);
                 }
             }
-            catch
+            else
             {
-                bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
-                bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
-                foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+                try
                 {
-                    bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+                    return RedirectToAction("GenerateNewReservationThreeBottles");
                 }
-                foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+#pragma warning disable CS0168 // Variable is declared but never used
+                catch (Exception ex)
+#pragma warning restore CS0168 // Variable is declared but never used
                 {
-                    bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+
+                    bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+                    bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+                    foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+                    }
+                    foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+                    }
+                    this.AddNotification("There was an error", NotificationType.ERROR);
+                    return View(bestelling);
                 }
-                return View(bestelling);
+            }
+            //try
+            //{
+            //    if (command == "Create")
+            //    {
+            //        //Dictionary<WhiskeyModel, int> DictionaryTostore = new Dictionary<WhiskeyModel, int>();
+            //        //DictionaryTostore = new Dictionary<WhiskeyModel, int> { { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList), bestelling.StoreChoiceAmountOfBottlesWhiskey } };
+
+            //        //int temp;
+            //        //if (amountofbottles1 != null && whiskey1 != null)
+            //        //{
+            //        //    if (Int32.TryParse(amountofbottles1, out temp))
+            //        //    {
+            //        //        DictionaryTostore.Add(MockdataService.GetMockdataService().GetWhiskeyTroughName(whiskey1),Int32.Parse(amountofbottles1));
+            //        //    } 
+
+            //        //}
+            //        //if (amountofbottles2 != null && whiskey2 != null)
+            //        //{
+            //        //    if (Int32.TryParse(amountofbottles1, out temp))
+            //        //    {
+            //        //        DictionaryTostore.Add(MockdataService.GetMockdataService().GetWhiskeyTroughName(whiskey1), Int32.Parse(amountofbottles1));
+            //        //    }
+
+            //        //}
+            //        //if (amountofbottles3 != null && whiskey3 != null)
+            //        //{
+            //        //    if (Int32.TryParse(amountofbottles1, out temp))
+            //        //    {
+            //        //        DictionaryTostore.Add(MockdataService.GetMockdataService().GetWhiskeyTroughName(whiskey1), Int32.Parse(amountofbottles1));
+            //        //    }
+
+            //        //}
+            //        //if (amountofbottles4 != null && whiskey4 != null)
+            //        //{
+            //        //    if (Int32.TryParse(amountofbottles1, out temp))
+            //        //    {
+            //        //        DictionaryTostore.Add(MockdataService.GetMockdataService().GetWhiskeyTroughName(whiskey1), Int32.Parse(amountofbottles1));
+            //        //    }
+
+            //        //}
+            //        //if (amountofbottles5 != null && whiskey5 != null)
+            //        //{
+            //        //    if (Int32.TryParse(amountofbottles1, out temp))
+            //        //    {
+            //        //        DictionaryTostore.Add(MockdataService.GetMockdataService().GetWhiskeyTroughName(whiskey1), Int32.Parse(amountofbottles1));
+            //        //    }
+
+            //        //}
+
+            //        //bestelling.bestellingModel.WhiskeyAndAmount = DictionaryTostore;
+            //        //var fullname = bestelling.StoreChoiceCustomerFromDropDownList;
+            //        //var firstname = fullname.Split(' ')[0];
+            //        //var lastname = fullname.Split(' ')[1];
+            //        bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+            //        bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+            //        foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+            //        {
+            //            bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+            //        }
+            //        foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+            //        {
+            //            bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+            //        }
+
+            //        bestelling.bestellingModel.WhiskeyAndAmount = new Dictionary<WhiskeyModel, int> { { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList), bestelling.StoreChoiceAmountOfBottlesWhiskey }, { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList2), bestelling.StoreChoiceAmountOfBottlesWhiskey2 } };
+            //        bestelling.bestellingModel.Customer = MockdataService.GetMockdataService().GetCustomer(bestelling.StoreChoiceCustomerFromDropDownList);
+            //        MockdataService.GetMockdataService().AddBestelling(bestelling.bestellingModel);
+            //        // TODO: Add insert logic here
+            //        // bestelling.bestellingModel.WhiskeyAndAmount = new Dictionary<WhiskeyModel, int>() { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList),Int32.Parse( bestelling.StoreChoiceWhiskeyFromDropDownList )};
+            //        // MockdataService.GetMockdataService().AddBestelling(bestelling);
+            //        return RedirectToAction("ReservationOverview");
+            //    }
+            //    else if (command == "Create another one")
+            //    {
+            //        bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+            //        bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+            //        foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+            //        {
+            //            bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+            //        }
+            //        foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+            //        {
+            //            bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+            //        }
+            //        return RedirectToAction("GenerateNewReservationThreeBottles");
+            //    }
+            //    else
+            //    {
+            //        bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+            //        bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+            //        foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+            //        {
+            //            bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+            //        }
+            //        foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+            //        {
+            //            bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+            //        }
+            //        return View();
+            //    }
+            //}
+            //catch
+            //{
+            //    bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+            //    bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+            //    foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+            //    {
+            //        bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+            //    }
+            //    foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+            //    {
+            //        bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+            //    }
+            //    return View();
+            //}
+
+
+            ////try
+            ////{
+            ////    if (command == "Create")
+            ////    {
+            ////        bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+            ////        bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+            ////        foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+            ////        {
+            ////            bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+            ////        }
+            ////        foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+            ////        {
+            ////            bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+            ////        }
+            ////        bestelling.bestellingModel.WhiskeyAndAmount = new Dictionary<WhiskeyModel, int> { { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList), bestelling.StoreChoiceAmountOfBottlesWhiskey }, { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList2), bestelling.StoreChoiceAmountOfBottlesWhiskey2 } };
+
+            ////        //var fullname = bestelling.StoreChoiceCustomerFromDropDownList;
+            ////        //var firstname = fullname.Split(' ')[0];
+            ////        //var lastname = fullname.Split(' ')[1];
+            ////        bestelling.bestellingModel.Customer = MockdataService.GetMockdataService().GetCustomer(bestelling.StoreChoiceCustomerFromDropDownList);
+            ////        MockdataService.GetMockdataService().AddBestelling(bestelling.bestellingModel);
+            ////        // TODO: Add insert logic here
+            ////        // bestelling.bestellingModel.WhiskeyAndAmount = new Dictionary<WhiskeyModel, int>() { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList),Int32.Parse( bestelling.StoreChoiceWhiskeyFromDropDownList )};
+            ////        // MockdataService.GetMockdataService().AddBestelling(bestelling);
+            ////        return RedirectToAction("ReservationOverview");
+            ////    }
+            ////    else if (command == "Create another one")
+            ////    {
+            ////        bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+            ////        bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+            ////        foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+            ////        {
+            ////            bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+            ////        }
+            ////        foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+            ////        {
+            ////            bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+            ////        }
+            ////        return RedirectToAction("GenerateNewReservationThreeBottles", bestelling);
+            ////    }
+            ////    else
+            ////    {
+            ////        bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+            ////        bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+            ////        foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+            ////        {
+            ////            bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+            ////        }
+            ////        foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+            ////        {
+            ////            bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+            ////        }
+            ////        return View();
+            ////    }
+            ////}
+            ////catch
+            ////{
+            ////    bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+            ////    bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+            ////    foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+            ////    {
+            ////        bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+            ////    }
+            ////    foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+            ////    {
+            ////        bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+            ////    }
+            ////    return View();
+            ////}
+        }
+
+        [HttpPost]
+        public ActionResult GenerateNewReservationThreeBottles(GeneraterReservationThreeBottlesViewModel bestelling, string command)
+        {
+            if (command == "Create")
+            {
+                try
+                {
+                    bestelling.bestellingModel.WhiskeyAndAmount = new Dictionary<WhiskeyModel, int> { { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList), bestelling.StoreChoiceAmountOfBottlesWhiskey },
+                    { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList2), bestelling.StoreChoiceAmountOfBottlesWhiskey2 },
+                    { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList3), bestelling.StoreChoiceAmountOfBottlesWhiskey3} };
+                    bestelling.bestellingModel.Customer = MockdataService.GetMockdataService().GetCustomer(bestelling.StoreChoiceCustomerFromDropDownList);
+                    MockdataService.GetMockdataService().AddBestelling(bestelling.bestellingModel);
+                    return RedirectToAction("ReservationOverview");
+                }
+#pragma warning disable CS0168 // Variable is declared but never used
+                catch (ArgumentException ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+                {
+                    bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+                    bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+                    foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+                    }
+                    foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+                    }
+                    this.AddNotification("You can't add duplicate whiskey's", NotificationType.ERROR);
+                    return View(bestelling);
+                }
+#pragma warning disable CS0168 // Variable is declared but never used
+                catch (NullReferenceException ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+                {
+                    bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+                    bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+                    foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+                    }
+                    foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+                    }
+                    this.AddNotification("All values should be filled in", NotificationType.ERROR);
+                    return View(bestelling);
+                }
+
+#pragma warning disable CS0168 // Variable is declared but never used
+                catch (Exception ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+                {
+                    bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+                    bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+                    foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+                    }
+                    foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+                    }
+                    this.AddNotification("There was an error", NotificationType.ERROR);
+                    return View(bestelling);
+                }
+            }
+            else
+            {
+                try
+                {
+                    return RedirectToAction("GenerateNewReservationThreeBottles");
+                }
+#pragma warning disable CS0168 // Variable is declared but never used
+                catch (Exception ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+                {
+
+                    bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+                    bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+                    foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+                    }
+                    foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+                    }
+                    this.AddNotification("There was an error", NotificationType.ERROR);
+                    return View(bestelling);
+                }
+            }
+      
+        }
+
+        [HttpPost]
+        public ActionResult GenerateNewReservationFourBottles(GenerateReservationFourBottlesViewModel bestelling, string command)
+        {
+            if (command == "Create")
+            {
+                try
+                {
+                    bestelling.bestellingModel.WhiskeyAndAmount = new Dictionary<WhiskeyModel, int> { { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList), bestelling.StoreChoiceAmountOfBottlesWhiskey },
+                    { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList2), bestelling.StoreChoiceAmountOfBottlesWhiskey2 },
+                    { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList3), bestelling.StoreChoiceAmountOfBottlesWhiskey3} ,
+                    { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList4), bestelling.StoreChoiceAmountOfBottlesWhiskey4} };
+                    bestelling.bestellingModel.Customer = MockdataService.GetMockdataService().GetCustomer(bestelling.StoreChoiceCustomerFromDropDownList);
+                    MockdataService.GetMockdataService().AddBestelling(bestelling.bestellingModel);
+                    return RedirectToAction("ReservationOverview");
+                }
+#pragma warning disable CS0168 // Variable is declared but never used
+                catch (ArgumentException ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+                {
+                    bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+                    bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+                    foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+                    }
+                    foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+                    }
+                    this.AddNotification("You can't add duplicate whiskey's", NotificationType.ERROR);
+                    return View(bestelling);
+                }
+#pragma warning disable CS0168 // Variable is declared but never used
+                catch (NullReferenceException ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+                {
+                    bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+                    bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+                    foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+                    }
+                    foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+                    }
+                    this.AddNotification("All values should be filled in", NotificationType.ERROR);
+                    return View(bestelling);
+                }
+
+#pragma warning disable CS0168 // Variable is declared but never used
+                catch (Exception ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+                {
+                    bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+                    bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+                    foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+                    }
+                    foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+                    }
+                    this.AddNotification("There was an error", NotificationType.ERROR);
+                    return View(bestelling);
+                }
+            }
+            else
+            {
+                try
+                {
+                    return RedirectToAction("GenerateNewReservationThreeBottles");
+                }
+#pragma warning disable CS0168 // Variable is declared but never used
+                catch (Exception ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+                {
+
+                    bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
+                    bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
+                    foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromCustomer.Add(new SelectListItem { Text = item.FirstName + " " + item.LastName, Value = item.id });
+                    }
+                    foreach (var item in MockdataService.GetMockdataService().GetAllWhiskeys().ToList())
+                    {
+                        bestelling.GenerateDropDownDataFromWhiskey.Add(new SelectListItem { Text = item.Name, Value = item.Name });
+                    }
+                    this.AddNotification("There was an error", NotificationType.ERROR);
+                    return View(bestelling);
+                }
             }
         }
 
         // GET: ReservationAdd/Edit/5
         public ActionResult ChangeDataReservation(string id)
-        {
+            {
             ChangeDataReservationViewModel changeDataReservationViewModel = new ChangeDataReservationViewModel();
             changeDataReservationViewModel.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
             changeDataReservationViewModel.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
@@ -298,7 +735,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             changeDataReservationViewModel.bestellingModel = MockdataService.GetMockdataService().GetBestelling(id);
             return View(changeDataReservationViewModel);
 
-        }
+            }
 
         // POST: ReservationAdd/Edit/5
         [HttpPost]

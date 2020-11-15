@@ -179,6 +179,7 @@
     <Compile Include="Controllers\WhiskeyController.cs" />
     <Compile Include="DAL\IDataService.cs" />
     <Compile Include="DAL\MockdataService.cs" />
+    <Compile Include="Extensions\NotificationExtensions.cs" />
     <Compile Include="GeneralFunctions\GeneralFunctions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -308,6 +309,8 @@
     <Content Include="Views\Reservation\RemoveReservation.cshtml" />
     <Content Include="Views\Reservation\GenerateNewReservationTwoBottles.cshtml" />
     <Content Include="Views\Reservation\GenerateNewReservationThreeBottles.cshtml" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
+    <Content Include="Views\Reservation\GenerateNewReservationFourBottles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

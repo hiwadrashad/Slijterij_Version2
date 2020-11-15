@@ -162,22 +162,22 @@ namespace SlijterijSjonnieLoper_version2.DAL
                 LabelImage = new MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))},
 
                 new WhiskeyModel { id = Guid.NewGuid().ToString(), age = 21, alcoholPercentages = AlcoholPercentagesModel.thirthyeight,
-                IsRemoved = false, Name = "John Wickers", NumberOfBottlesOnStorage = 12, NumberOfBottlesReserved = 14, Price = 45.75,
+                IsRemoved = false, Name = "John Wickers2", NumberOfBottlesOnStorage = 12, NumberOfBottlesReserved = 14, Price = 45.75,
                 ProductionSite = ProductionSite.Sparrow , typesOfWhiskey = TypesOfWhiskeyModel.Bourbon ,
                 LabelImage = new MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))},
 
                 new WhiskeyModel { id = Guid.NewGuid().ToString(), age = 21, alcoholPercentages = AlcoholPercentagesModel.thirthyeight,
-                IsRemoved = false, Name = "John Wickers", NumberOfBottlesOnStorage = 12, NumberOfBottlesReserved = 14, Price = 45.75,
+                IsRemoved = false, Name = "John Wickers3", NumberOfBottlesOnStorage = 12, NumberOfBottlesReserved = 14, Price = 45.75,
                 ProductionSite = ProductionSite.Sparrow , typesOfWhiskey = TypesOfWhiskeyModel.Bourbon ,
                 LabelImage = new MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))},
 
                 new WhiskeyModel { id = Guid.NewGuid().ToString(), age = 21, alcoholPercentages = AlcoholPercentagesModel.thirthyeight,
-                IsRemoved = false, Name = "John Wickers", NumberOfBottlesOnStorage = 12, NumberOfBottlesReserved = 14, Price = 45.75,
+                IsRemoved = false, Name = "John Wickers4", NumberOfBottlesOnStorage = 12, NumberOfBottlesReserved = 14, Price = 45.75,
                 ProductionSite = ProductionSite.Sparrow , typesOfWhiskey = TypesOfWhiskeyModel.Bourbon ,
                 LabelImage = new MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))},
 
                 new WhiskeyModel { id = Guid.NewGuid().ToString(), age = 21, alcoholPercentages = AlcoholPercentagesModel.thirthyeight,
-                IsRemoved = false, Name = "John Wickers", NumberOfBottlesOnStorage = 12, NumberOfBottlesReserved = 14, Price = 45.75,
+                IsRemoved = false, Name = "John Wickers5", NumberOfBottlesOnStorage = 12, NumberOfBottlesReserved = 14, Price = 45.75,
                 ProductionSite = ProductionSite.Sparrow , typesOfWhiskey = TypesOfWhiskeyModel.Bourbon ,
                 LabelImage = new MemoryPostedFile(File.ReadAllBytes(HttpContext.Current.Server.MapPath(@"~/Images/WhiskeyLabel.jpg")))},
             };
