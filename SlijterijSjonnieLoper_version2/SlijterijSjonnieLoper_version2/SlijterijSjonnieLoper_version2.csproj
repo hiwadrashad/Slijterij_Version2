@@ -311,6 +311,8 @@
     <Content Include="Views\Reservation\GenerateNewReservationThreeBottles.cshtml" />
     <Content Include="Views\Shared\_Notifications.cshtml" />
     <Content Include="Views\Reservation\GenerateNewReservationFourBottles.cshtml" />
+    <Content Include="Views\Reservation\GenerateNewReservationFiveBottles.cshtml" />
+    <Content Include="Views\Reservation\ChangeDataReservationTwoBottles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

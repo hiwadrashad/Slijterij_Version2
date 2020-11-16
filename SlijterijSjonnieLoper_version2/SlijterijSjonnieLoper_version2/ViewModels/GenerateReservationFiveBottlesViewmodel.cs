@@ -55,5 +55,8 @@ namespace SlijterijSjonnieLoper_version2.ViewModels
         [Required]
         [Display(Name = "Customer")]
         public string StoreChoiceCustomerFromDropDownList { get; set; }
+
+        public Models.BestellingModel bestellingModel { get; set; }
+
     }
 }

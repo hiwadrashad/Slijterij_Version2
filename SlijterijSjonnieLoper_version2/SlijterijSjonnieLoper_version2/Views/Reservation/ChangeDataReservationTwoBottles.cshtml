@@ -1,4 +1,4 @@
-﻿@model SlijterijSjonnieLoper_version2.ViewModels.ChangeDataReservationViewModel
+﻿@model SlijterijSjonnieLoper_version2.ViewModels.ChangeDataReservationViewModelTwoBottlesViewModel
 
 @{
     ViewBag.Title = "ChangeDataReservation";
@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>BestellingModel</h4>
     <hr />
@@ -29,6 +29,22 @@
         @Html.LabelFor(model => model.StoreChoiceAmountOfBottlesWhiskey, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(n => n.StoreChoiceAmountOfBottlesWhiskey, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.StoreChoiceAmountOfBottlesWhiskey, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StoreChoiceWhiskeyFromDropDownList, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(n => n.StoreChoiceWhiskeyFromDropDownList2, (List<SelectListItem>)Model.GenerateDropDownDataFromWhiskey, "Select whiskey")
+            @Html.ValidationMessageFor(model => model.StoreChoiceWhiskeyFromDropDownList, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StoreChoiceAmountOfBottlesWhiskey, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(n => n.StoreChoiceAmountOfBottlesWhiskey2, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.StoreChoiceAmountOfBottlesWhiskey, "", new { @class = "text-danger" })
         </div>
     </div>

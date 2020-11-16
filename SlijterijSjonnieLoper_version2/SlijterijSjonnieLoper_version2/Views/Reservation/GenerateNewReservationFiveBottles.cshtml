@@ -1,26 +1,26 @@
-﻿@model SlijterijSjonnieLoper_version2.ViewModels.ChangeDataReservationViewModel
+﻿@model SlijterijSjonnieLoper_version2.ViewModels.GenerateReservationFiveBottlesViewModel
 
 @{
-    ViewBag.Title = "ChangeDataReservation";
+    ViewBag.Title = "GenerateNewReservation";
 }
 
-<h2>ChangeDataReservation</h2>
+<h2>GenerateNewReservation</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
-    <h4>BestellingModel</h4>
+    <h4></h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.bestellingModel.id)
     @Html.Partial("_Notifications")
 
-    <div class="form-group">
+
+    <div id="appendtothis" class="form-group">
         @Html.LabelFor(model => model.StoreChoiceWhiskeyFromDropDownList, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(n => n.StoreChoiceWhiskeyFromDropDownList, (List<SelectListItem>)Model.GenerateDropDownDataFromWhiskey, "Select whiskey")
+            @Html.DropDownListFor(model => model.StoreChoiceWhiskeyFromDropDownList, (List<SelectListItem>)Model.GenerateDropDownDataFromWhiskey, "Select your whiskey")
             @Html.ValidationMessageFor(model => model.StoreChoiceWhiskeyFromDropDownList, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -28,15 +28,88 @@
     <div class="form-group">
         @Html.LabelFor(model => model.StoreChoiceAmountOfBottlesWhiskey, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(n => n.StoreChoiceAmountOfBottlesWhiskey, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.StoreChoiceAmountOfBottlesWhiskey, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.StoreChoiceAmountOfBottlesWhiskey, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div id="appendtothis" class="form-group">
+        @Html.LabelFor(model => model.StoreChoiceWhiskeyFromDropDownList, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.StoreChoiceWhiskeyFromDropDownList2, (List<SelectListItem>)Model.GenerateDropDownDataFromWhiskey, "Select your whiskey")
+            @Html.ValidationMessageFor(model => model.StoreChoiceWhiskeyFromDropDownList, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StoreChoiceAmountOfBottlesWhiskey, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StoreChoiceAmountOfBottlesWhiskey2, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.StoreChoiceAmountOfBottlesWhiskey, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div id="appendtothis" class="form-group">
+        @Html.LabelFor(model => model.StoreChoiceWhiskeyFromDropDownList, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.StoreChoiceWhiskeyFromDropDownList3, (List<SelectListItem>)Model.GenerateDropDownDataFromWhiskey, "Select your whiskey")
+            @Html.ValidationMessageFor(model => model.StoreChoiceWhiskeyFromDropDownList, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StoreChoiceAmountOfBottlesWhiskey, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StoreChoiceAmountOfBottlesWhiskey3, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.StoreChoiceAmountOfBottlesWhiskey, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div id="appendtothis" class="form-group">
+        @Html.LabelFor(model => model.StoreChoiceWhiskeyFromDropDownList, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.StoreChoiceWhiskeyFromDropDownList4, (List<SelectListItem>)Model.GenerateDropDownDataFromWhiskey, "Select your whiskey")
+            @Html.ValidationMessageFor(model => model.StoreChoiceWhiskeyFromDropDownList, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StoreChoiceAmountOfBottlesWhiskey, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StoreChoiceAmountOfBottlesWhiskey4, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.StoreChoiceAmountOfBottlesWhiskey, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div id="appendtothis" class="form-group">
+        @Html.LabelFor(model => model.StoreChoiceWhiskeyFromDropDownList, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.StoreChoiceWhiskeyFromDropDownList5, (List<SelectListItem>)Model.GenerateDropDownDataFromWhiskey, "Select your whiskey")
+            @Html.ValidationMessageFor(model => model.StoreChoiceWhiskeyFromDropDownList, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StoreChoiceAmountOfBottlesWhiskey, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StoreChoiceAmountOfBottlesWhiskey5, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.StoreChoiceAmountOfBottlesWhiskey, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input name="command" type="submit" value="Create another whiskey" class="btn btn-default" />
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.StoreChoiceCustomerFromDropDownList, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(n => n.StoreChoiceCustomerFromDropDownList, (List<SelectListItem>)Model.GenerateDropDownDataFromCustomer, "Select customer")
+            @Html.DropDownListFor(model => model.StoreChoiceCustomerFromDropDownList, (List<SelectListItem>)Model.GenerateDropDownDataFromCustomer, "Select your customer")
             @Html.ValidationMessageFor(model => model.StoreChoiceCustomerFromDropDownList, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -109,8 +182,10 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            <input name="command" type="submit" value="Create" class="btn btn-default" />
         </div>
     </div>
+
+
 </div>
 }
