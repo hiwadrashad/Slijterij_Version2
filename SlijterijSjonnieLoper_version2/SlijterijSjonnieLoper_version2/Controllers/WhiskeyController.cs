@@ -1,5 +1,7 @@
 ﻿using SlijterijSjonnieLoper_version2.DAL;
+using SlijterijSjonnieLoper_version2.Extensions;
 using SlijterijSjonnieLoper_version2.Models;
+using SlijterijSjonnieLoper_version2.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +16,43 @@ namespace SlijterijSjonnieLoper_version2.Controllers
 
         public ActionResult WhiskeySearchOverview(string searching)
         {
-            return View(MockdataService.GetMockdataService().SearchWhiskeys(searching));
+            //return View(MockdataService.GetMockdataService().SearchWhiskeys(searching));
+            return View();
         }
         public ActionResult WhiskeyOverView()
         {
-            return View(MockdataService.GetMockdataService().GetAllWhiskeys());
+            SearchViewModel searchViewModel = new SearchViewModel();
+            searchViewModel.whiskeyModels = MockdataService.GetMockdataService().GetAllWhiskeys();
+            return View(searchViewModel);
+        }
+
+        [HttpPost]
+
+        public ActionResult WhiskeyOverView(SearchViewModel model)
+        {
+            try
+            {
+                SearchViewModel searchViewModel = new SearchViewModel();
+                searchViewModel.whiskeyModels = MockdataService.GetMockdataService().SearchWhiskeys(model.SearchQuery);
+                return View(searchViewModel);
+            }
+#pragma warning disable CS0168 // Variable is declared but never used
+            catch (NullReferenceException ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+            {
+                SearchViewModel searchViewModel = new SearchViewModel();
+                this.AddNotification("Please enter a valid value", NotificationType.ERROR);
+                return View(searchViewModel);
+            }
+#pragma warning disable CS0168 // Variable is declared but never used
+            catch (Exception ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+            {
+                SearchViewModel searchViewModel = new SearchViewModel();
+                this.AddNotification("Please enter a valid value", NotificationType.ERROR);
+                return View(searchViewModel);
+            }
+
         }
 
         // GET: Whiskey/Details/5

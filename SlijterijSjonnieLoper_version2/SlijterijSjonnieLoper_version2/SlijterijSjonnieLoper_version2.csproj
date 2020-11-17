@@ -228,6 +228,7 @@
     <Compile Include="ViewModels\ManageLoginsViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\VerifyCodeViewModel.cs" />
@@ -243,7 +244,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\customer2.png" />
+    <Content Include="Images\customer_icon.png" />
+    <Content Include="Images\drinking-glasses-background.jpg" />
+    <Content Include="Images\reservation2.png" />
+    <Content Include="Images\reservation_icon.png" />
+    <Content Include="Images\whiskey2.png" />
     <Content Include="Images\WhiskeyLabel.jpg" />
+    <Content Include="Images\whiskey_icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

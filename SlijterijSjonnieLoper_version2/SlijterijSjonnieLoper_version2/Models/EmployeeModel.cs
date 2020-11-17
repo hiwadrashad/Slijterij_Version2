@@ -10,6 +10,7 @@ namespace SlijterijSjonnieLoper_version2.Models
     public class EmployeeModel
     {
         [Key]
+        [ScaffoldColumn(false)]
         public string id { get; set; }
 
         [Required]
@@ -81,10 +82,10 @@ namespace SlijterijSjonnieLoper_version2.Models
 
         public RoleEmployeeModel RoleEmployee { get; set; }
 
-        //public EmployeeModel()
-        //{
-        //    this.WorkingSince = DateTime.Now;
-        //    this.id = Guid.NewGuid().ToString();
-        //}
+        public EmployeeModel()
+        {
+            this.WorkingSince = DateTime.Now;
+            this.id = Guid.NewGuid().ToString();
+        }
     }
 }

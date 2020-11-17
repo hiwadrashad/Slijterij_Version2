@@ -9,6 +9,7 @@ namespace SlijterijSjonnieLoper_version2.Models
     public class BestellingModel
     {
         [Key]
+        [ScaffoldColumn(false)]
         public string id { get; set; }
 
  
@@ -55,10 +56,10 @@ namespace SlijterijSjonnieLoper_version2.Models
 
         public string PostalCode { get; set; }
 
-        //public BestellingModel()
-        //{
-        //    this.id = Guid.NewGuid().ToString();
-        //    this.DateOfReservation = DateTime.Now;
-        //}
+        public BestellingModel()
+        {
+            this.id = Guid.NewGuid().ToString();
+            this.DateOfReservation = DateTime.Now;
+        }
     }
 }

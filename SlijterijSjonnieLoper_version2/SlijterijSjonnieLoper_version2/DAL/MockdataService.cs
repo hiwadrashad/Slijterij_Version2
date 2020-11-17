@@ -306,7 +306,22 @@ namespace SlijterijSjonnieLoper_version2.DAL
 #nullable enable
         public List<WhiskeyModel>? SearchWhiskeys(string name)
         {
-            return _whiskey.Where(a => a.Name.ToLower() == name.ToLower() || a.ProductionSite.ToString().ToLower() == name.ToLower() || a.alcoholPercentages.ToString().ToLower() == name.ToLower() || a.age.ToString().ToLower() == name.ToLower() || a.typesOfWhiskey.ToString().ToLower() == name.ToLower() || name == null).ToList();
+            List<WhiskeyModel> combinedsearch = new List<WhiskeyModel>();
+            var textsplit = name.Split(' ').ToList();
+            foreach (var item in textsplit)
+            {
+                if (_whiskey.Where(a => a.Name.ToLower() == name.ToLower() || a.ProductionSite.ToString().ToLower() == name.ToLower() ||
+                a.alcoholPercentages.ToString().ToLower() == name.ToLower() || a.age.ToString().ToLower() == name.ToLower() ||
+                a.typesOfWhiskey.ToString().ToLower() == name.ToLower() || name == null).ToList() != null)
+                {
+                    combinedsearch.AddRange(_whiskey.Where(a => a.Name.ToLower() == name.ToLower() || a.ProductionSite.ToString().ToLower() == name.ToLower() ||
+                    a.alcoholPercentages.ToString().ToLower() == name.ToLower() || a.age.ToString().ToLower() == name.ToLower() ||
+                    a.typesOfWhiskey.ToString().ToLower() == name.ToLower() || name == null).ToList());
+                }
+            }
+            var listwithnoduplicates = combinedsearch.Distinct().ToList();
+            //return _whiskey.Where(a => a.Name.ToLower() == name.ToLower() || a.ProductionSite.ToString().ToLower() == name.ToLower() || a.alcoholPercentages.ToString().ToLower() == name.ToLower() || a.age.ToString().ToLower() == name.ToLower() || a.typesOfWhiskey.ToString().ToLower() == name.ToLower() || name == null).ToList();
+            return listwithnoduplicates;
         }
 #nullable disable
 

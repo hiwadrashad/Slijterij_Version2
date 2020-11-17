@@ -97,13 +97,6 @@
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.bestellingModel.DateOfReservation, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.bestellingModel.DateOfReservation, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.bestellingModel.DateOfReservation, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.bestellingModel.DateOfCompletionOrder, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -113,15 +106,6 @@
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.bestellingModel.CompletedOrder, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.bestellingModel.CompletedOrder)
-                @Html.ValidationMessageFor(model => model.bestellingModel.CompletedOrder, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.bestellingModel.City, htmlAttributes: new { @class = "control-label col-md-2" })

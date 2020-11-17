@@ -176,7 +176,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
                     //var fullname = bestelling.StoreChoiceCustomerFromDropDownList;
                     //var firstname = fullname.Split(' ')[0];
                     //var lastname = fullname.Split(' ')[1];
-
+                    bestelling.bestellingModel.DateOfReservation = DateTime.Now;
                     bestelling.GenerateDropDownDataFromCustomer = new List<SelectListItem>();
                     bestelling.GenerateDropDownDataFromWhiskey = new List<SelectListItem>();
                     foreach (var item in MockdataService.GetMockdataService().GetAllCustomers().ToList())
@@ -273,6 +273,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             {
                 try
                 {
+                    bestelling.bestellingModel.DateOfReservation = DateTime.Now;
                     bestelling.bestellingModel.id = Guid.NewGuid().ToString();
                     bestelling.bestellingModel.WhiskeyAndAmount = new Dictionary<WhiskeyModel, int> { { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList), bestelling.StoreChoiceAmountOfBottlesWhiskey }, { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList2), bestelling.StoreChoiceAmountOfBottlesWhiskey2 } };
                     bestelling.bestellingModel.Customer = MockdataService.GetMockdataService().GetCustomer(bestelling.StoreChoiceCustomerFromDropDownList);
@@ -552,6 +553,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             {
                 try
                 {
+                    bestelling.bestellingModel.DateOfReservation = DateTime.Now;
                     bestelling.bestellingModel.WhiskeyAndAmount = new Dictionary<WhiskeyModel, int> { { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList), bestelling.StoreChoiceAmountOfBottlesWhiskey },
                     { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList2), bestelling.StoreChoiceAmountOfBottlesWhiskey2 },
                     { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList3), bestelling.StoreChoiceAmountOfBottlesWhiskey3} };
@@ -648,6 +650,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             {
                 try
                 {
+                    bestelling.bestellingModel.DateOfReservation = DateTime.Now;
                     bestelling.bestellingModel.WhiskeyAndAmount = new Dictionary<WhiskeyModel, int> { { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList), bestelling.StoreChoiceAmountOfBottlesWhiskey },
                     { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList2), bestelling.StoreChoiceAmountOfBottlesWhiskey2 },
                     { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList3), bestelling.StoreChoiceAmountOfBottlesWhiskey3} ,
@@ -744,6 +747,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             {
                 try
                 {
+                    bestelling.bestellingModel.DateOfReservation = DateTime.Now;
                     bestelling.bestellingModel.WhiskeyAndAmount = new Dictionary<WhiskeyModel, int> { { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList), bestelling.StoreChoiceAmountOfBottlesWhiskey },
                     { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList2), bestelling.StoreChoiceAmountOfBottlesWhiskey2 },
                     { MockdataService.GetMockdataService().GetWhiskeyTroughName(bestelling.StoreChoiceWhiskeyFromDropDownList3), bestelling.StoreChoiceAmountOfBottlesWhiskey3} ,

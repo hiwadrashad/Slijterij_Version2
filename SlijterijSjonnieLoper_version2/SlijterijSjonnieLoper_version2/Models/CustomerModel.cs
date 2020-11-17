@@ -11,6 +11,7 @@ namespace SlijterijSjonnieLoper_version2.Models
     {
  
         [Key]
+        [ScaffoldColumn(false)]
         public string id { get; set; }
 
         [Required]
@@ -63,11 +64,11 @@ namespace SlijterijSjonnieLoper_version2.Models
 
       // public List<BestellingModel> Whiskeys { get; set; }
 
-        //public CustomerModel()
-        //{
-        //    this.id = Guid.NewGuid().ToString();
-        ////    Whiskeys = new List<BestellingModel>();
-        //}
+        public CustomerModel()
+        {
+            this.id = Guid.NewGuid().ToString();
+        //    Whiskeys = new List<BestellingModel>();
+        }
 
 
     }
