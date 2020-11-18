@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using System.Web.WebSockets;
 using SlijterijSjonnieLoper_version2.GeneralFunctions;
+using WebGrease.Configuration;
 
 namespace SlijterijSjonnieLoper_version2.DAL
 {
@@ -335,5 +336,19 @@ namespace SlijterijSjonnieLoper_version2.DAL
             return _customer.Where(a => a.FirstName == firstname && a.LastName == lastname).FirstOrDefault();
         }
 
+        public bool CheckAndAssignIfOrderIsDoneTroughCheckingDateOfCompletion()
+        {
+            for(int i = 0; i<_bestelling.Count; i++)
+            {
+                if (_bestelling[i].DateOfCompletionOrder <= DateTime.Now)
+                {
+                    _bestelling[i].CompletedOrder = true;
+                    SmtpMailService.SendCustomerMail.SendMailToCustomer(_bestelling[i].Customer.EmailAdress,ITextSharpPdfCreator.GenerateMailForCustomer.GeneratePdfFileForCustomer());
+
+                }
+            }
+         return true;
+        }
+       
     }
 }

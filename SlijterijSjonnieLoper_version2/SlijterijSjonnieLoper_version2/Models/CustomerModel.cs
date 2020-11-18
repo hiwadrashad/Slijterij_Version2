@@ -34,6 +34,12 @@ namespace SlijterijSjonnieLoper_version2.Models
         public string PrepositionName { get; set; }
 
         [Required]
+        [EmailAddress]
+        [Display(Name = "E-mail adress")]
+        public string EmailAdress { get; set; }
+
+
+        [Required]
 
         public string City { get; set; }
 
