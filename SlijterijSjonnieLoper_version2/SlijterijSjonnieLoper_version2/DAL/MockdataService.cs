@@ -344,7 +344,7 @@ namespace SlijterijSjonnieLoper_version2.DAL
                 {
                     _bestelling[i].CompletedOrder = true;
                     SmtpMailService.SendCustomerMail.SendMailToCustomer(_bestelling[i].Customer.EmailAdress,ITextSharpPdfCreator.GenerateMailForCustomer.GeneratePdfFileForCustomer());
-
+                     
                 }
             }
          return true;
