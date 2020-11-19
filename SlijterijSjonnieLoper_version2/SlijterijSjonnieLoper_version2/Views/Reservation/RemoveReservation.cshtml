@@ -4,11 +4,10 @@
     ViewBag.Title = "RemoveReservation";
 }
 
-<h2>RemoveReservation</h2>
+<h2>Remove reservation</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>BestellingModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -81,7 +80,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-warning" style="transform:translateX(100px)" /> 
 
         </div>
     }

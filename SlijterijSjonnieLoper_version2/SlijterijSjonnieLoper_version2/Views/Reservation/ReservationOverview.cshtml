@@ -4,6 +4,7 @@
     ViewBag.Title = "ReservationOverview";
 }
 <link rel="stylesheet" href="~/CSS/OverviewTabs.css" />
+<link rel="stylesheet" href="~/CSS/MarginsOverviewPages.css"/>
 
 @*<style>
         .container {
@@ -34,7 +35,6 @@
     @foreach (var item in Model)
     {
     <div class="card">
-        <img class="image" src="~/Images/werknemer.jpg">
         <h1>@Html.DisplayFor(modelItem => item.Customer.FirstName)</h1>
         <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().DateOfReservation)</p>
         <p>@Html.DisplayFor(modelitem => item.DateOfReservation)</p>
@@ -46,9 +46,9 @@
         <p>@Html.DisplayFor(modelitem => item.Customer.FirstName)</p>
         <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().Customer.LastName)</p>
         <p>@Html.DisplayFor(modelitem => item.Customer.LastName)</p>
-        @Html.ActionLink("Change customer data", "ChangeCustomerData", new { id = item.id }) |
-        @Html.ActionLink("See more customer data", "CustomerData", new { id = item.id }) |
-        @Html.ActionLink("Remove Customer", "RemoveCustomerdata", new { id = item.id })
+        @Html.ActionLink("Change reservation data", "ChangeDataReservation", new { id = item.id }) |
+        @Html.ActionLink("See more reservation data", "ReservationData", new { id = item.id }) |
+        @Html.ActionLink("Remove reservation", "RemoveReservation", new { id = item.id })
     </div>
 
     }
@@ -117,8 +117,8 @@
                 @Html.DisplayFor(modelItem => item.Customer.FirstName)
             </td>
             <td>
-                @Html.ActionLink("Edit reservation", "ChangeDataReservation", new { id = item.id }) |
-                @Html.ActionLink("See details reservation", "ReservationData", new { id = item.id }) |
+                @Html.ActionLink("Change reservation data", "ChangeDataReservation", new { id = item.id }) |
+                @Html.ActionLink("See more reservation data", "ReservationData", new { id = item.id }) |
                 @Html.ActionLink("Remove reservation", "RemoveReservation", new { id = item.id })
             </td>
         </tr>

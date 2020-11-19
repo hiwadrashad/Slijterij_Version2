@@ -4,7 +4,7 @@
     ViewBag.Title = "ChangeWhiskeyData";
 }
 
-<h2>ChangeWhiskeyData</h2>
+<h2>Change whiskey data</h2>
 
 
 @using (Html.BeginForm("ChangeWhiskeyData", "Whiskey", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -12,7 +12,6 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>WhiskeyModel</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.id)
@@ -59,9 +58,9 @@
 
 
     <div class="form-group">
-        @Html.LabelFor(model => model.LabelImage)
+        @Html.LabelFor(model => model.LabelImage, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <input type="file" name="StoredImage"><br />
+            <input type="file" name="StoredImage" ><br />
         </div>
     </div>
 
@@ -101,15 +100,13 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            <input type="submit" value="Save" class="btn btn-warning" />
         </div>
     </div>
 </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

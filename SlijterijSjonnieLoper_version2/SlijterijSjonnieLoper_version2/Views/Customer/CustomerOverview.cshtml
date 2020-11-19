@@ -4,7 +4,21 @@
     ViewBag.Title = "CustomerOverview";
 }
 <link rel="stylesheet" href="~/CSS/OverviewTabs.css" />
+<link rel="stylesheet" href="~/CSS/MarginsOverviewPages.css"/>
+@*<style>
+    .btn {
+    margin-bottom:
+        30px;
+    margin-top:30px;
 
+    }
+    .card {
+    margin-left:10px;
+    margin-right:10px;
+    margin-top:10px;
+    margin-bottom:10px;
+    }
+</style>*@
 @*<style>
         .container {
             text-align: justify;
@@ -35,6 +49,8 @@
     @foreach (var item in Model)
     {
     <div class="card">
+        <img class="image" src="~/Images/werknemer.jpg">
+
         <h1>@Html.DisplayFor(modelItem => item.FirstName)</h1>
         <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().DateOfBirth)</p>
         <p>@Html.DisplayFor(modelitem => item.DateOfBirth)</p>

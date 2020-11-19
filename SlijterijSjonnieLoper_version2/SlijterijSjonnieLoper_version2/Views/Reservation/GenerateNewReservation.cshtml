@@ -5,7 +5,7 @@
 }
 
 
-<h2>GenerateNewReservation</h2>
+<h2>Generate new reservation</h2>
 
 @using (Html.BeginForm("GenerateNewReservation", "Reservation", FormMethod.Post, new { enctype = "multipart/form-data"}))
 {
@@ -63,7 +63,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.bestellingModel.City, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.bestellingModel.City, new { htmlAttributes = new { @class = "form-control", Value = "tehsij" } })
+                @Html.EditorFor(model => model.bestellingModel.City, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.bestellingModel.City, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -102,7 +102,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input name="command" type="submit" value="Create" class="btn btn-default" />
+                <input name="command" type="submit" value="Create" class="btn btn-warning" />
             </div>
         </div>
 
