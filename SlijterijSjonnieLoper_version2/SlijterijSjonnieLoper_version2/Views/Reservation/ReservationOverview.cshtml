@@ -34,6 +34,8 @@
     @foreach (var item in Model)
     {
     <div class="card">
+        <img class="image" src="~/Images/werknemer.jpg">
+        <h1>@Html.DisplayFor(modelItem => item.Customer.FirstName)</h1>
         <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().DateOfReservation)</p>
         <p>@Html.DisplayFor(modelitem => item.DateOfReservation)</p>
         <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().DateOfCompletionOrder)</p>

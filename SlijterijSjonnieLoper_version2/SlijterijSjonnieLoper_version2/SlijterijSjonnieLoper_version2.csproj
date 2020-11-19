@@ -264,8 +264,10 @@
     <Content Include="Images\customer2.png" />
     <Content Include="Images\customer_icon.png" />
     <Content Include="Images\drinking-glasses-background.jpg" />
+    <Content Include="Images\hamburger-menu.png" />
     <Content Include="Images\reservation2.png" />
     <Content Include="Images\reservation_icon.png" />
+    <Content Include="Images\werknemer.jpg" />
     <Content Include="Images\whiskey2.png" />
     <Content Include="Images\WhiskeyLabel.jpg" />
     <Content Include="Images\whiskey_icon.png" />

@@ -28,21 +28,21 @@
         <img class="image" src="~/Images/reservation2.png">
         </a>
         <h2>Reservation</h2>
-        <p><button class="btn btn-default">Click here to go &raquo;</button></p>
+        <p><button onclick="location.href='@Url.Action("ReservationOverview", "Reservation")'" class="btn btn-default">Click here to go &raquo;</button></p>
     </div>
     <div class="col-md-4">
         <a href="@Url.Action("WhiskeyOverView","Whiskey")">
             <img class="image3" src="~/Images/whiskey2.png" style="width:200px">
             </a>
             <h2>Whiskey</h2>
-            <p><button class="btn btn-default">Click here to go  &raquo;</button></p>
+            <p><button onclick="location.href='@Url.Action("WhiskeyOverview", "Whiskey")'" class="btn btn-default">Click here to go  &raquo;</button></p>
     </div>
     <div class="col-md-4">
         <a href="@Url.Action("CustomerOverview","Customer")">
             <img class="image3" src="~/Images/customer2.png" style="width:200px">
         </a>
             <h2>Customer</h2>
-            <p><button class="btn btn-default">Click here to go  &raquo;</button></p>
+            <p><button class="btn btn-default" onclick="location.href='@Url.Action("CustomerOverview", "Customer")'">Click here to go  &raquo;</button></p>
     </div>
 </div>
 <script>
