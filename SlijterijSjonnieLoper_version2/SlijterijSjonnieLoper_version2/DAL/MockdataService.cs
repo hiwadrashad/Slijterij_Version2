@@ -106,23 +106,23 @@ namespace SlijterijSjonnieLoper_version2.DAL
             };
             _customer = new List<CustomerModel>()
             {
-                new CustomerModel { id = Guid.NewGuid().ToString(), BirthPlace = "Alaska", City = "London",
+                new CustomerModel { id = Guid.NewGuid().ToString(),EmailAdress ="test@gmail.com", BirthPlace = "Alaska", City = "London",
                 DateOfBirth = new DateTime(1987, 12, 12), FirstName = "John", LastName = "Smith", HouseNumberAddition = "N.A",
                 PostalNumber = "45AL", PrepositionName = "Von", StreetName = "Berkleylane", StreetNumber = 12},
 
-                new CustomerModel { id = Guid.NewGuid().ToString(), BirthPlace = "Alaska", City = "London",
+                new CustomerModel { id = Guid.NewGuid().ToString(),EmailAdress ="test@gmail.com", BirthPlace = "Alaska", City = "London",
                 DateOfBirth = new DateTime(1987, 12, 12), FirstName = "John", LastName = "Smith", HouseNumberAddition = "N.A",
                 PostalNumber = "45AL", PrepositionName = "Von", StreetName = "Berkleylane", StreetNumber = 12},
 
-                new CustomerModel { id = Guid.NewGuid().ToString(), BirthPlace = "Alaska", City = "London",
+                new CustomerModel { id = Guid.NewGuid().ToString(),EmailAdress ="test@gmail.com", BirthPlace = "Alaska", City = "London",
                 DateOfBirth = new DateTime(1987, 12, 12), FirstName = "John", LastName = "Smith", HouseNumberAddition = "N.A",
                 PostalNumber = "45AL", PrepositionName = "Von", StreetName = "Berkleylane", StreetNumber = 12},
 
-                new CustomerModel { id = Guid.NewGuid().ToString(), BirthPlace = "Alaska", City = "London",
+                new CustomerModel { id = Guid.NewGuid().ToString(),EmailAdress ="test@gmail.com", BirthPlace = "Alaska", City = "London",
                 DateOfBirth = new DateTime(1987, 12, 12), FirstName = "John", LastName = "Smith", HouseNumberAddition = "N.A",
                 PostalNumber = "45AL", PrepositionName = "Von", StreetName = "Berkleylane", StreetNumber = 12},
 
-                new CustomerModel { id = Guid.NewGuid().ToString(), BirthPlace = "Alaska", City = "London",
+                new CustomerModel { id = Guid.NewGuid().ToString(),EmailAdress ="test@gmail.com", BirthPlace = "Alaska", City = "London",
                 DateOfBirth = new DateTime(1987, 12, 12), FirstName = "John", LastName = "Smith", HouseNumberAddition = "N.A",
                 PostalNumber = "45AL", PrepositionName = "Von", StreetName = "Berkleylane", StreetNumber = 12},
 
@@ -343,7 +343,7 @@ namespace SlijterijSjonnieLoper_version2.DAL
                 if (_bestelling[i].DateOfCompletionOrder <= DateTime.Now)
                 {
                     _bestelling[i].CompletedOrder = true;
-                    SmtpMailService.SendCustomerMail.SendMailToCustomer(_bestelling[i].Customer.EmailAdress,ITextSharpPdfCreator.GenerateMailForCustomer.GeneratePdfFileForCustomer());
+                   // SmtpMailService.SendCustomerMail.SendMailToCustomer(_bestelling[i].Customer.EmailAdress,ITextSharpPdfCreator.GenerateMailForCustomer.GeneratePdfFileForCustomer());
                      
                 }
             }
