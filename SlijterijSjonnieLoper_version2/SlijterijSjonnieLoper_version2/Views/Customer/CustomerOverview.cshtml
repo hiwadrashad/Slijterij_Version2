@@ -3,12 +3,54 @@
 @{
     ViewBag.Title = "CustomerOverview";
 }
+<link rel="stylesheet" href="~/CSS/OverviewTabs.css" />
 
-<h2>CustomerOverview</h2>
+@*<style>
+        .container {
+            text-align: justify;
+        }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            text-align: center;
+            float: left;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        .image {
+            max-width: 300px;
+        }
+    </style>*@
+
+
+<h2>Customer overview</h2>
+
+<div class="container">
+
+    @foreach (var item in Model)
+    {
+    <div class="card">
+        <h1>@Html.DisplayFor(modelItem => item.FirstName)</h1>
+        <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().DateOfBirth)</p>
+        <p>@Html.DisplayFor(modelitem => item.DateOfBirth)</p>
+        <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().FirstName)</p>
+        <p>@Html.DisplayFor(modelitem => item.FirstName)</p>
+        <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().LastName)</p>
+        <p>@Html.DisplayFor(modelitem => item.LastName)</p>
+        @Html.ActionLink("Change customer data", "ChangeCustomerData", new { id = item.id }) |
+        @Html.ActionLink("See more customer data", "CustomerData", new { id = item.id }) |
+        @Html.ActionLink("Remove Customer", "RemoveCustomerdata", new { id = item.id })
+    </div>
+
+    }
+
+</div>
+<input type="button" value="Add new customer" class="btn btn-warning" onclick="@("window.location.href='" + @Url.Action("AddNewCustomer", "Customer") + "'");" />
 <table class="table">
     <tr>
         <th>
@@ -44,44 +86,45 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfBirth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrepositionName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StreetName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StreetNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HouseNumberAddition)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostalNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BirthPlace)
-        </td>
-        <td>
-            @Html.ActionLink("Change customer data", "ChangeCustomerData", new { id=item.id }) |
-            @Html.ActionLink("See more customer data", "CustomerData", new { id=item.id }) |
-            @Html.ActionLink("Remove Customer", "RemoveCustomerdata", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrepositionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HouseNumberAddition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostalNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthPlace)
+            </td>
+            <td>
+                @Html.ActionLink("Change customer data", "ChangeCustomerData", new { id = item.id }) |
+                @Html.ActionLink("See more customer data", "CustomerData", new { id = item.id }) |
+                @Html.ActionLink("Remove Customer", "RemoveCustomerdata", new { id = item.id })
+            </td>
+        </tr>
+    }
 
 </table>

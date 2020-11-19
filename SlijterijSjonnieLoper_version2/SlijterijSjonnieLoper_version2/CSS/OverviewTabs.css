@@ -1,0 +1,19 @@
+﻿.container {
+    text-align: justify;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    text-align: center;
+    float: left;
+}
+
+.title {
+    color: grey;
+    font-size: 18px;
+}
+
+.image {
+    max-width: 300px;
+}

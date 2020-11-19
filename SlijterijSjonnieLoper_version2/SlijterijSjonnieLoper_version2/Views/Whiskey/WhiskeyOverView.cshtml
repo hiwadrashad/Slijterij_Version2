@@ -3,17 +3,66 @@
 @{
     ViewBag.Title = "WhiskeyOverView";
 }
+<link rel="stylesheet" href="~/CSS/OverviewTabs.css"/>
+@*<style>
+    .container {
+        text-align: justify;
+    }
 
-<h2>WhiskeyOverView</h2>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        text-align: center;
+        float: left;
+    }
+
+    .title {
+        color: grey;
+        font-size: 18px;
+    }
+
+    .image {
+        max-width: 300px;
+    }
+</style>*@
+
+<h2>Whiskey overview</h2>
 @Html.Partial("_Notifications")
 <p>
-    @Html.ActionLink("Create New", "AddNewWhiskey")
 </p>
 @using (Html.BeginForm("WhiskeyOverView", "Whiskey", FormMethod.Post))
 {
     @Html.EditorFor(model => model.SearchQuery, new { htmlAttributes = new { @class = "form-control" } })
-    <input type="submit" value="Search">
+    <input type="submit" value="Search" class="btn btn-warning">
 }
+<div class="container">
+    @*@System.Drawing.Image.FromStream(Model.whiskeyModels.FirstOrDefault().LabelImage.InputStream).*@
+    @if (Model.whiskeyModels != null)
+    {
+        foreach (var item in Model.whiskeyModels)
+        {
+            <div class="card">
+                <img class="image" src="~/Images/WhiskeyLabel.jpg">
+                <h1>@Html.DisplayFor(modelItem => item.Name)</h1>
+                <p class="title">@Html.DisplayNameFor(model => model.whiskeyModels.FirstOrDefault().Name)</p>
+                <p>@Html.DisplayFor(modelitem => item.Name)</p>
+                <p class="title">@Html.DisplayNameFor(model => model.whiskeyModels.FirstOrDefault().Price)</p>
+                <p>@Html.DisplayFor(modelitem => item.Price)</p>
+                <p class="title">@Html.DisplayNameFor(model => model.whiskeyModels.FirstOrDefault().NumberOfBottlesOnStorage)</p>
+                <p>@Html.DisplayFor(modelitem => item.NumberOfBottlesOnStorage)</p>
+                <p class="title">@Html.DisplayNameFor(model => model.whiskeyModels.FirstOrDefault().IsRemoved)</p>
+                <p>@Html.DisplayFor(modelitem => item.IsRemoved)</p>
+                @Html.ActionLink("Change whiskey data", "ChangeWhiskeyData", new { id = item.id }) |
+                @Html.ActionLink("see more data whiskey", "WhiskeyData", new { id = item.id }) |
+            </div>
+
+        }
+    }
+</div>
+
+<input type="button" value="Add new whiskey" class="btn btn-warning" onclick="@("window.location.href='" + @Url.Action("AddNewWhiskey", "Whiskey") + "'");" />
+
+
 <table class="table">
     <tr>
         <th>
@@ -36,34 +85,35 @@
         </th>
         <th></th>
     </tr>
+
     @if (Model.whiskeyModels != null)
     {
         foreach (var item in Model.whiskeyModels)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfBottlesOnStorage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfBottlesReserved)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsRemoved)
-            </td>
-            <td>
-                @Html.ActionLink("Change whiskey data", "ChangeWhiskeyData", new { id = item.id }) |
-                @Html.ActionLink("see more data whiskey", "WhiskeyData", new { id = item.id }) |
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfBottlesOnStorage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfBottlesReserved)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsRemoved)
+                </td>
+                <td>
+                    @Html.ActionLink("Change whiskey data", "ChangeWhiskeyData", new { id = item.id }) |
+                    @Html.ActionLink("see more data whiskey", "WhiskeyData", new { id = item.id }) |
+                </td>
+            </tr>
         }
     }
 

@@ -3,12 +3,58 @@
 @{
     ViewBag.Title = "ReservationOverview";
 }
+<link rel="stylesheet" href="~/CSS/OverviewTabs.css" />
 
-<h2>ReservationOverview</h2>
+@*<style>
+        .container {
+            text-align: justify;
+        }
 
-<p>
-    @Html.ActionLink("Create New", "GenerateNewReservation")
-</p>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            text-align: center;
+            float: left;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        .image {
+            max-width: 300px;
+        }
+    </style>*@
+
+<h2>Reservation overview</h2>
+
+<div class="container">
+
+    @foreach (var item in Model)
+    {
+    <div class="card">
+        <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().DateOfReservation)</p>
+        <p>@Html.DisplayFor(modelitem => item.DateOfReservation)</p>
+        <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().DateOfCompletionOrder)</p>
+        <p>@Html.DisplayFor(modelitem => item.DateOfCompletionOrder)</p>
+        <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().CompletedOrder)</p>
+        <p>@Html.DisplayFor(modelitem => item.CompletedOrder)</p>
+        <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().Customer.FirstName)</p>
+        <p>@Html.DisplayFor(modelitem => item.Customer.FirstName)</p>
+        <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().Customer.LastName)</p>
+        <p>@Html.DisplayFor(modelitem => item.Customer.LastName)</p>
+        @Html.ActionLink("Change customer data", "ChangeCustomerData", new { id = item.id }) |
+        @Html.ActionLink("See more customer data", "CustomerData", new { id = item.id }) |
+        @Html.ActionLink("Remove Customer", "RemoveCustomerdata", new { id = item.id })
+    </div>
+
+    }
+
+</div>
+
+<input type="button" value="Add new reservation" class="btn btn-warning" onclick="@("window.location.href='" + @Url.Action("GenerateNewReservation", "Reservation") + "'");" />
+
 <table class="table">
     <tr>
         <th>
@@ -41,41 +87,42 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfReservation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfCompletionOrder)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CompletedOrder)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StreetName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StreetNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HouseNumberAddition)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.FirstName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit reservation", "ChangeDataReservation", new { id=item.id }) |
-            @Html.ActionLink("See details reservation", "ReservationData", new { id=item.id }) |
-            @Html.ActionLink("Remove reservation", "RemoveReservation", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfReservation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfCompletionOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletedOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HouseNumberAddition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.FirstName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit reservation", "ChangeDataReservation", new { id = item.id }) |
+                @Html.ActionLink("See details reservation", "ReservationData", new { id = item.id }) |
+                @Html.ActionLink("Remove reservation", "RemoveReservation", new { id = item.id })
+            </td>
+        </tr>
+    }
 
 
 </table>
-<input type="button" value="Add new customer" onclick="@("window.location.href='" + @Url.Action("AddNewCustomer", "Customer") + "'");" />
-<input type="button" value="Add new whiskey" onclick="@("window.location.href='" + @Url.Action("AddNewWhiskey", "Whiskey") + "'");" />
+<input type="button" value="Add new customer" class="btn btn-warning" onclick="@("window.location.href='" + @Url.Action("AddNewCustomer", "Customer") + "'");" />
+<input type="button" value="Add new whiskey" class="btn btn-warning" onclick="@("window.location.href='" + @Url.Action("AddNewWhiskey", "Whiskey") + "'");" />
