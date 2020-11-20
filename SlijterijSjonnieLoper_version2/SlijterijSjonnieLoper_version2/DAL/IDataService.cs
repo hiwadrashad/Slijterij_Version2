@@ -32,6 +32,12 @@ namespace SlijterijSjonnieLoper_version2.DAL
         IEnumerable<WhiskeyModel> GetAllWhiskeys();
         WhiskeyModel GetWhiskey(string id);
         bool UpdateWhiskey(WhiskeyModel whiskey);
+#nullable enable
+        List<WhiskeyModel>? SearchWhiskeys(string name);
+#nullable disable
+        WhiskeyModel GetWhiskeyTroughName(string name);
+        CustomerModel GetCustomerTroughFirstAndLastName(string firstname, string lastname);
+        bool CheckAndAssignIfOrderIsDoneTroughCheckingDateOfCompletion();
 
     }
 }

@@ -18,24 +18,24 @@ namespace SlijterijSjonnieLoper_version2.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
+    //public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    //{
+    //    public ApplicationDbContext()
+    //        : base("DefaultConnection", throwIfV1Schema: false)
+    //    {
+    //    }
 
-        public DbSet<BestellingModel> bestellingModels { get; set; }
+    //    public DbSet<BestellingModel> bestellingModels { get; set; }
 
-        public DbSet<CustomerModel> customerModels { get; set; }
+    //    public DbSet<CustomerModel> customerModels { get; set; }
 
-        public DbSet<EmployeeModel> employeeModels { get; set; }
+    //    public DbSet<EmployeeModel> employeeModels { get; set; }
 
-        public DbSet<WhiskeyModel> whiskeyModels { get; set; }
+    //    public DbSet<WhiskeyModel> whiskeyModels { get; set; }
 
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-    }
+    //    public static ApplicationDbContext Create()
+    //    {
+    //        return new ApplicationDbContext();
+    //    }
+    //}
 }

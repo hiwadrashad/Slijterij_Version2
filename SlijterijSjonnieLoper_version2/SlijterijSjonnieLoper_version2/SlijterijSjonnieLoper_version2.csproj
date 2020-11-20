@@ -177,6 +177,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationDbContext\ApplicationDBContext.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Controllers\WhiskeyController.cs" />
+    <Compile Include="DAL\ApplicationDataService.cs" />
     <Compile Include="DAL\IDataService.cs" />
     <Compile Include="DAL\MockdataService.cs" />
     <Compile Include="Extensions\NotificationExtensions.cs" />

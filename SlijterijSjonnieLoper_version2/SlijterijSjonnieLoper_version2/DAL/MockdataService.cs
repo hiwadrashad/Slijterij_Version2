@@ -39,12 +39,12 @@ namespace SlijterijSjonnieLoper_version2.DAL
 
             return _MockdataService;
         }
-        Dictionary<WhiskeyModel, int> smthng = new Dictionary<WhiskeyModel, int>();
+        //Dictionary<WhiskeyModel, int> smthng = new Dictionary<WhiskeyModel, int>();
        
 
         public void InitData()
         {
-            smthng.Add(new WhiskeyModel { id = Guid.NewGuid().ToString() }, 12);
+            //smthng.Add(new WhiskeyModel { id = Guid.NewGuid().ToString() }, 12);
             _bestelling = new List<BestellingModel>()
             {
                 //new BestellingModel { id = Guid.NewGuid().ToString(), AmountOfBottles = 14,
