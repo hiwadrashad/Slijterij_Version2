@@ -53,7 +53,16 @@ namespace SlijterijSjonnieLoper_version2.DAL
 
         public bool CheckAndAssignIfOrderIsDoneTroughCheckingDateOfCompletion()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < _dbContext.bestellingModels.Count(); i++)
+            {
+                if (_dbContext.bestellingModels.ToList()[i].DateOfCompletionOrder <= DateTime.Now)
+                {
+                    _dbContext.bestellingModels.ToList()[i].CompletedOrder = true;
+                    var item = _dbContext.bestellingModels.Where(a => a.id == _dbContext.bestellingModels.ToList()[i].id).FirstOrDefault();
+                    item = _dbContext.bestellingModels.ToList()[i];
+                }
+            }
+            return true;
         }
 
         public bool DeleteBestelling(string id)
@@ -129,17 +138,28 @@ namespace SlijterijSjonnieLoper_version2.DAL
 
         public CustomerModel GetCustomerTroughFirstAndLastName(string firstname, string lastname)
         {
-            throw new NotImplementedException();
+            return _dbContext.customerModels.Where(a => a.FirstName == firstname && a.LastName == lastname).FirstOrDefault();
         }
 
         public WhiskeyModel GetWhiskeyTroughName(string name)
         {
-            throw new NotImplementedException();
+            return _dbContext.whiskeyModels.Where(a => a.Name == name).FirstOrDefault();
         }
 #nullable enable
         public List<WhiskeyModel>? SearchWhiskeys(string name)
         {
-            throw new NotImplementedException();
+            List<WhiskeyModel> combinedsearch = new List<WhiskeyModel>();
+            var textsplit = name.Split(' ').ToList();
+            foreach (var item in textsplit)
+            {
+                if (_dbContext.whiskeyModels.Where(a => a.Name.ToLower() == name.ToLower() || a.ProductionSite.ToString().ToLower() == name.ToLower() || a.alcoholPercentages.ToString().ToLower() == name.ToLower() || a.age.ToString().ToLower() == name.ToLower() || a.typesOfWhiskey.ToString().ToLower() == name.ToLower() || name == null).ToList() != null)
+                {
+                    combinedsearch.AddRange(_dbContext.whiskeyModels.Where(a => a.Name.ToLower() == name.ToLower() || a.ProductionSite.ToString().ToLower() == name.ToLower() || a.alcoholPercentages.ToString().ToLower() == name.ToLower() || a.age.ToString().ToLower() == name.ToLower() || a.typesOfWhiskey.ToString().ToLower() == name.ToLower() || name == null).ToList());
+                }
+            }
+            var listwithnoduplicates = combinedsearch.Distinct().ToList();
+
+            return listwithnoduplicates;
         }
 #nullable disable
 

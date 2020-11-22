@@ -11,16 +11,19 @@ namespace SlijterijSjonnieLoper_version2.Controllers
     public class CustomerController : Controller
     {
         // GET: AddCustomer
+
+        private IDataService _dataService = MockdataService.GetMockdataService();
+        //private IDataService _dataService = ApplicationDataService.GetService();
         public ActionResult CustomerOverview()
         {
             
-            return View(MockdataService.GetMockdataService().GetAllCustomers().ToList());
+            return View(_dataService.GetAllCustomers().ToList());
         }
 
         // GET: AddCustomer/Details/5
         public ActionResult CustomerData(string id)
         {
-            return View(MockdataService.GetMockdataService().GetCustomer(id));
+            return View(_dataService.GetCustomer(id));
         }
 
         // GET: AddCustomer/Create
@@ -36,7 +39,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             try
             {
                 // TODO: Add insert logic here
-                MockdataService.GetMockdataService().AddCustomer(customer);
+                _dataService.AddCustomer(customer);
                 return RedirectToAction("CustomerOverview");
             }
             catch
@@ -48,7 +51,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         // GET: AddCustomer/Edit/5
         public ActionResult ChangeCustomerData(string id)
         {
-            return View(MockdataService.GetMockdataService().GetCustomer(id));
+            return View(_dataService.GetCustomer(id));
             
         }
 
@@ -59,7 +62,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             try
             {
                 // TODO: Add update logic here
-                MockdataService.GetMockdataService().UpdateCustomer(customer);
+                _dataService.UpdateCustomer(customer);
                 return RedirectToAction("CustomerOverview");
             }
             catch
@@ -71,7 +74,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         // GET: AddCustomer/Delete/5
         public ActionResult RemoveCustomerdata(string id)
         {
-            return View(MockdataService.GetMockdataService().GetCustomer(id));
+            return View(_dataService.GetCustomer(id));
         }
 
         // POST: AddCustomer/Delete/5
@@ -81,7 +84,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             try
             {
                 // TODO: Add delete logic here
-                MockdataService.GetMockdataService().DeleteCustomer(customer.id);
+                _dataService.DeleteCustomer(customer.id);
                 return RedirectToAction("CustomerOverview");
             }
             catch

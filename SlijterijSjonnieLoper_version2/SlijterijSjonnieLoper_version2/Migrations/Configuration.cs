@@ -5,14 +5,14 @@ namespace SlijterijSjonnieLoper_version2.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SlijterijSjonnieLoper_version2.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SlijterijSjonnieLoper_version2.ApplicationDbContext.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(SlijterijSjonnieLoper_version2.Models.ApplicationDbContext context)
+        protected override void Seed(SlijterijSjonnieLoper_version2.ApplicationDbContext.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

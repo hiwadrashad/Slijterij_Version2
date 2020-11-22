@@ -11,7 +11,7 @@ namespace SlijterijSjonnieLoper_version2.ApplicationDbContext
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         private static ApplicationDbContext _dbContext;
-        private ApplicationDbContext()
+        public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }

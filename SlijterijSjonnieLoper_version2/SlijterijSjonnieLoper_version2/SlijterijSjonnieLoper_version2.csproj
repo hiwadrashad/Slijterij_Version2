@@ -208,6 +208,10 @@
     <Compile Include="Migrations\202011031303226_DBUpdated.Designer.cs">
       <DependentUpon>202011031303226_DBUpdated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011221547040_Model Update.cs" />
+    <Compile Include="Migrations\202011221547040_Model Update.Designer.cs">
+      <DependentUpon>202011221547040_Model Update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AlcoholPercentagesModel.cs" />
     <Compile Include="Models\BestellingModel.cs" />
@@ -369,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011031303226_DBUpdated.resx">
       <DependentUpon>202011031303226_DBUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011221547040_Model Update.resx">
+      <DependentUpon>202011221547040_Model Update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

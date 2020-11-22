@@ -14,15 +14,18 @@ namespace SlijterijSjonnieLoper_version2.Controllers
     {
         // GET: Whiskey
 
+        private IDataService _dataService = MockdataService.GetMockdataService();
+        //private IDataService _dataService = ApplicationDataService.GetService();
+
         public ActionResult WhiskeySearchOverview(string searching)
         {
-            //return View(MockdataService.GetMockdataService().SearchWhiskeys(searching));
+            //return View(_dataService.SearchWhiskeys(searching));
             return View();
         }
         public ActionResult WhiskeyOverView()
         {
             SearchViewModel searchViewModel = new SearchViewModel();
-            searchViewModel.whiskeyModels = MockdataService.GetMockdataService().GetAllWhiskeys();
+            searchViewModel.whiskeyModels = _dataService.GetAllWhiskeys();
             return View(searchViewModel);
         }
 
@@ -33,7 +36,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             try
             {
                 SearchViewModel searchViewModel = new SearchViewModel();
-                searchViewModel.whiskeyModels = MockdataService.GetMockdataService().SearchWhiskeys(model.SearchQuery);
+                searchViewModel.whiskeyModels = _dataService.SearchWhiskeys(model.SearchQuery);
                 return View(searchViewModel);
             }
 #pragma warning disable CS0168 // Variable is declared but never used
@@ -58,7 +61,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         // GET: Whiskey/Details/5
         public ActionResult WhiskeyData(string id)
         {
-            return View(MockdataService.GetMockdataService().GetWhiskey(id));
+            return View(_dataService.GetWhiskey(id));
         }
 
         // GET: Whiskey/Create
@@ -79,14 +82,14 @@ namespace SlijterijSjonnieLoper_version2.Controllers
 
                     whiskey.LabelImage = StoredImage;
                     // TODO: Add insert logic here
-                    MockdataService.GetMockdataService().AddWhiskey(whiskey);
+                    _dataService.AddWhiskey(whiskey);
                     return RedirectToAction("WhiskeyOverView");
                 }
                 else if (submit == "CreateAnotherOne")
                 {
                     whiskey.LabelImage = StoredImage;
                     // TODO: Add insert logic here
-                    MockdataService.GetMockdataService().AddWhiskey(whiskey);
+                    _dataService.AddWhiskey(whiskey);
                     return RedirectToAction("AddNewWhiskey");
 
                 }
@@ -104,7 +107,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         // GET: Whiskey/Edit/5
         public ActionResult ChangeWhiskeyData(string id)
         {
-            return View(MockdataService.GetMockdataService().GetWhiskey(id));
+            return View(_dataService.GetWhiskey(id));
         }
 
         // POST: Whiskey/Edit/5
@@ -115,7 +118,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             {
                 // TODO: Add update logic here
                 whiskey.LabelImage = StoredImage;
-                MockdataService.GetMockdataService().UpdateWhiskey(whiskey);
+                _dataService.UpdateWhiskey(whiskey);
                 return RedirectToAction("WhiskeyOverView");
             }
             catch
