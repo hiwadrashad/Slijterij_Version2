@@ -24,6 +24,14 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         }
         public ActionResult WhiskeyOverView()
         {
+            foreach (var item in _dataService.GetAllWhiskeys())
+            {
+                item.Storeimageas64ByteString = GeneralFunctions.ImageProcessing.ConvertHttpPostfilebaseto64bytearray(item.id);
+            }
+            foreach (var item in _dataService.GetAllWhiskeys())
+            {
+                System.Drawing.Image.FromStream(item.LabelImage.InputStream);
+            }
             SearchViewModel searchViewModel = new SearchViewModel();
             searchViewModel.whiskeyModels = _dataService.GetAllWhiskeys();
             return View(searchViewModel);
@@ -33,6 +41,10 @@ namespace SlijterijSjonnieLoper_version2.Controllers
 
         public ActionResult WhiskeyOverView(SearchViewModel model)
         {
+            //foreach (var item in model.whiskeyModels)
+            //{
+            //    item.Storeimageas64ByteString = GeneralFunctions.ImageProcessing.ConvertHttpPostfilebaseto64bytearray(item.id);
+            //}
             try
             {
                 SearchViewModel searchViewModel = new SearchViewModel();

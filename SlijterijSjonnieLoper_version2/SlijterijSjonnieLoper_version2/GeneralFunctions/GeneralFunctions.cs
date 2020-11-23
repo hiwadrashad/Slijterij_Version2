@@ -53,5 +53,17 @@ namespace SlijterijSjonnieLoper_version2.GeneralFunctions
             var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
             return imgSrc;
         }
+
+        public static byte[] ConvertToBytes(HttpPostedFileBase file)
+        {
+            int fileSizeInBytes = file.ContentLength;
+            byte[] data = null;
+            using (var br = new BinaryReader(file.InputStream))
+            {
+                data = br.ReadBytes(fileSizeInBytes);
+            }
+
+            return data;
+        }
     }
 }

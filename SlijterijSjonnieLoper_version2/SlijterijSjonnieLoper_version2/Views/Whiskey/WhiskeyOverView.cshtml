@@ -22,7 +22,7 @@
         foreach (var item in Model.whiskeyModels)
         {
             <div class="card">
-                <img class="image" src="~/Images/WhiskeyLabel.jpg">
+                <img class="image" src="@item.Storeimageas64ByteString">
                 <h1>@Html.DisplayFor(modelItem => item.Name)</h1>
                 <p class="title">@Html.DisplayNameFor(model => model.whiskeyModels.FirstOrDefault().Name)</p>
                 <p>@Html.DisplayFor(modelitem => item.Name)</p>

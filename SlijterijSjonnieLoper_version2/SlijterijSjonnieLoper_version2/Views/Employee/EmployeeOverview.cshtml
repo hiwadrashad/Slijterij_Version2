@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SlijterijSjonnieLoper_version2.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "EmployeeOverview";
+}
+
+<h2>Employee overview</h2>
+<link rel="stylesheet" href="~/CSS/OverviewTabs.css" />
+<link rel="stylesheet" href="~/CSS/MarginsOverviewPages.css">
+<p>
+    @Html.ActionLink("Add new employee", "Register", "Account")
+</p>
+
+<div class="container">
+    @*@System.Drawing.Image.FromStream(Model.whiskeyModels.FirstOrDefault().LabelImage.InputStream).*@
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <div class="card">
+                <img class="image" src="~/Images/werknemer.jpg">
+                <h1>@Html.DisplayFor(modelItem => item.Email)</h1>
+                <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</p>
+                <p>@Html.DisplayFor(modelitem => item.Email)</p>
+                <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().EmailConfirmed)</p>
+                <p>@Html.DisplayFor(modelitem => item.EmailConfirmed)</p>
+                <p class="title">@Html.DisplayNameFor(model => model.FirstOrDefault().PhoneNumber)</p>
+                <p>@Html.DisplayFor(modelitem => item.PhoneNumber)</p>
+            </div>
+
+        }
+    }
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailConfirmed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailConfirmed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.ActionLink("Edit employee data", "ChangeDataEmployee", new { id=item.Id }) |
+            @Html.ActionLink("See employe data", "EmployeeData", new { id=item.Id }) |
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+        </td>
+    </tr>
+}
+
+</table>

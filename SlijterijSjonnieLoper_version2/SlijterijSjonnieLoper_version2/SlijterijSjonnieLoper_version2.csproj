@@ -183,8 +183,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="ASHXHandlers\MyImageHandler.ashx.cs">
+      <DependentUpon>MyImageHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
@@ -281,6 +285,7 @@
     <Content Include="Images\whiskey_icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ASHXHandlers\MyImageHandler.ashx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -350,6 +355,9 @@
     <Content Include="Views\Reservation\ChangeDataReservationThreeBottles.cshtml" />
     <Content Include="Views\Reservation\ChangeDataReservationFourBottles.cshtml" />
     <Content Include="Views\Reservation\ChangeDataReservationFiveBottles.cshtml" />
+    <Content Include="Views\Employee\EmployeeOverview.cshtml" />
+    <Content Include="Views\Employee\EmployeeData.cshtml" />
+    <Content Include="Views\Employee\ChangeDataEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -8,9 +8,10 @@ using System.Web.Mvc;
 
 namespace SlijterijSjonnieLoper_version2.Controllers
 {
-    public class CustomerController : Controller
+    public class CustomerController : AccountController
     {
         // GET: AddCustomer
+        
 
         private IDataService _dataService = MockdataService.GetMockdataService();
         //private IDataService _dataService = ApplicationDataService.GetService();

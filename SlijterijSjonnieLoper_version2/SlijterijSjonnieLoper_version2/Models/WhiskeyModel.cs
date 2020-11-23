@@ -42,6 +42,8 @@ namespace SlijterijSjonnieLoper_version2.Models
 
         public HttpPostedFileBase LabelImage { get; set; }
 
+        public string Storeimageas64ByteString { get; set; }
+
         [Required]
 
         public double Price { get; set; }

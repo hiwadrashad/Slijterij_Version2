@@ -1,5 +1,7 @@
+using SlijterijSjonnieLoper_version2.ApplicationDbContext;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +14,7 @@ namespace SlijterijSjonnieLoper_version2
     {
         protected void Application_Start()
         {
+            Database.SetInitializer<ApplicationDbContext.ApplicationDbContext>(null);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
