@@ -358,6 +358,7 @@
     <Content Include="Views\Employee\EmployeeOverview.cshtml" />
     <Content Include="Views\Employee\EmployeeData.cshtml" />
     <Content Include="Views\Employee\ChangeDataEmployee.cshtml" />
+    <Content Include="Views\Employee\RemoveEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -58,8 +58,8 @@
         </td>
         <td>
             @Html.ActionLink("Edit employee data", "ChangeDataEmployee", new { id=item.Id }) |
-            @Html.ActionLink("See employe data", "EmployeeData", new { id=item.Id }) |
-            @*@Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+            @Html.ActionLink("See employee data", "EmployeeData", new { id=item.Id }) |
+            @Html.ActionLink("Remove employee", "RemoveEmployee", new { id=item.Id })
         </td>
     </tr>
 }

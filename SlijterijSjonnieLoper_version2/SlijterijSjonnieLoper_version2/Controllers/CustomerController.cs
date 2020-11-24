@@ -15,6 +15,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
 
         private IDataService _dataService = MockdataService.GetMockdataService();
         //private IDataService _dataService = ApplicationDataService.GetService();
+        [Authorize]
         public ActionResult CustomerOverview()
         {
             
@@ -22,18 +23,21 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         }
 
         // GET: AddCustomer/Details/5
+        [Authorize]
         public ActionResult CustomerData(string id)
         {
             return View(_dataService.GetCustomer(id));
         }
 
         // GET: AddCustomer/Create
+        [Authorize]
         public ActionResult AddNewCustomer()
         {
             return View();
         }
 
         // POST: AddCustomer/Create
+        [Authorize]
         [HttpPost]
         public ActionResult AddNewCustomer(CustomerModel customer)
         {
@@ -50,6 +54,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         }
 
         // GET: AddCustomer/Edit/5
+        [Authorize]
         public ActionResult ChangeCustomerData(string id)
         {
             return View(_dataService.GetCustomer(id));
@@ -57,7 +62,9 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         }
 
         // POST: AddCustomer/Edit/5
+        [Authorize]
         [HttpPost]
+
         public ActionResult ChangeCustomerData(string id, CustomerModel customer)
         {
             try
@@ -73,12 +80,15 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         }
 
         // GET: AddCustomer/Delete/5
+        [Authorize]
+
         public ActionResult RemoveCustomerdata(string id)
         {
             return View(_dataService.GetCustomer(id));
         }
 
-        // POST: AddCustomer/Delete/5
+        // POST: AddCustomer/Delete/
+        [Authorize]
         [HttpPost]
         public ActionResult RemoveCustomerData(string id, CustomerModel customer)
         {

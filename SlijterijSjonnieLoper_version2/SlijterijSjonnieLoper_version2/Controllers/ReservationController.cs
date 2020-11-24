@@ -18,11 +18,16 @@ namespace SlijterijSjonnieLoper_version2.Controllers
 
         private IDataService _dataService = MockdataService.GetMockdataService();
         //private IDataService _dataService = ApplicationDataService.GetService();
+
+        [Authorize]
+
         public ActionResult ReservationOverview()
         {
             return View(_dataService.GetAllBestellingen().ToList());
 
         }
+
+        [Authorize]
 
         // GET: ReservationAdd/Details/5
         public ActionResult ReservationData(string id)
@@ -31,6 +36,8 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         }
 
         // GET: ReservationAdd/Create
+        [Authorize]
+
         public ActionResult GenerateNewReservation()
         {
             ViewModels.GenerateReservationViewModel viewModel = new ViewModels.GenerateReservationViewModel();
@@ -52,6 +59,8 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             return View(viewModel);
         }
 
+        [Authorize]
+
         public ActionResult GenerateNewReservationTwoBottles()
         {
             GenerateReservationTwoBottlesViewModel viewModel2 = new GenerateReservationTwoBottlesViewModel();          
@@ -69,6 +78,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             return View(viewModel2);
         }
 
+        [Authorize]
 
         public ActionResult GenerateNewReservationThreeBottles()
         {
@@ -87,6 +97,8 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             return View(viewModel3);
         }
 
+        [Authorize]
+
         public ActionResult GenerateNewReservationFourBottles()
         {
             GenerateReservationFourBottlesViewModel viewModel4 = new GenerateReservationFourBottlesViewModel();
@@ -103,6 +115,8 @@ namespace SlijterijSjonnieLoper_version2.Controllers
 
             return View(viewModel4);
         }
+
+        [Authorize]
 
         public ActionResult GenerateNewReservationFiveBottles()
         {
@@ -122,6 +136,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         }
 
         // POST: ReservationAdd/Create
+        [Authorize]
         [HttpPost]
         // extra parameters for if typescript is being implemented for adding new requests
         public ActionResult GenerateNewReservation(GenerateReservationViewModel bestelling, string command,string amountofbottles1, string amountofbottles2,
@@ -269,7 +284,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             }
         }
 
-
+        [Authorize]
         [HttpPost]
         public ActionResult GenerateNewReservationTwoBottles(GenerateReservationTwoBottlesViewModel bestelling, string command)
         {
@@ -550,6 +565,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             ////}
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult GenerateNewReservationThreeBottles(GeneraterReservationThreeBottlesViewModel bestelling, string command)
         {
@@ -647,6 +663,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
       
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult GenerateNewReservationFourBottles(GenerateReservationFourBottlesViewModel bestelling, string command)
         {
@@ -744,6 +761,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult GenerateNewReservationFiveBottles(GenerateReservationFiveBottlesViewModel bestelling, string command)
         {
@@ -854,6 +872,8 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         }
 
         // GET: ReservationAdd/Edit/5
+        [Authorize]
+
         public ActionResult ChangeDataReservation(string id)
         {
             if (_dataService.GetBestelling(id).WhiskeyAndAmount.Count <= 1)
@@ -904,7 +924,8 @@ namespace SlijterijSjonnieLoper_version2.Controllers
 
         }
 
-  
+
+        [Authorize]
 
         public ActionResult ChangeDataReservationTwoBottles()
         {
@@ -923,6 +944,9 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             return View(change);
         }
 
+        [Authorize]
+
+
         public ActionResult ChangeDataReservationThreeBottles()
         {
             ChangeDataReservationViewModelThreeBottlesViewModel change = (ChangeDataReservationViewModelThreeBottlesViewModel)TempData["datachange3"];
@@ -939,6 +963,9 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             }
             return View(change);
         }
+
+        [Authorize]
+
         public ActionResult ChangeDataReservationFourBottles()
         {
             ChangeDataReservationViewModelFourBottlesViewModel change = (ChangeDataReservationViewModelFourBottlesViewModel)TempData["datachange4"];
@@ -955,6 +982,8 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             }
             return View(change);
         }
+
+        [Authorize]
 
         public ActionResult ChangeDataReservationFiveBottles()
         {
@@ -973,7 +1002,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             return View(change);
         }
 
-
+        [Authorize]
         [HttpPost]
         public ActionResult ChangeDataReservation(string id, ChangeDataReservationViewModel bestelling)
         {
@@ -1022,7 +1051,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             }
         }
 
-
+        [Authorize]
         [HttpPost]
 
         public ActionResult ChangeDataReservationTwoBottles(string id, ChangeDataReservationViewModelTwoBottlesViewModel bestelling)
@@ -1089,6 +1118,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
 
         public ActionResult ChangeDataReservationThreeBottles(string id, ChangeDataReservationViewModelThreeBottlesViewModel bestelling)
@@ -1155,7 +1185,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             }
         }
 
-
+        [Authorize]
         [HttpPost]
 
         public ActionResult ChangeDataReservationFourBottles(string id, ChangeDataReservationViewModelFourBottlesViewModel bestelling)
@@ -1223,6 +1253,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
 
         public ActionResult ChangeDataReservationFiveBottles(string id, ChangeDataReservationViewModelFiveBottlesViewModel bestelling)
@@ -1291,6 +1322,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             }
         }
 
+        [Authorize]
 
         // GET: ReservationAdd/Delete/5
         public ActionResult RemoveReservation(string id)
@@ -1299,6 +1331,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         }
 
         // POST: ReservationAdd/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult RemoveReservation(string id, BestellingModel bestelling)
         {

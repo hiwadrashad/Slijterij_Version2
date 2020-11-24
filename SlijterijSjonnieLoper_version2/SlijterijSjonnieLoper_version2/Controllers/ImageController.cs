@@ -10,6 +10,7 @@ namespace SlijterijSjonnieLoper_version2.Controllers
     public class ImageController : Controller
     {
         // GET: Others
+        [Authorize]
         public ActionResult ViewImage(string id)
         {
             ViewImageViewModel viewImageViewModel = new ViewImageViewModel();

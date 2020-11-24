@@ -17,11 +17,14 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         private IDataService _dataService = MockdataService.GetMockdataService();
         //private IDataService _dataService = ApplicationDataService.GetService();
 
+        [Authorize]
         public ActionResult WhiskeySearchOverview(string searching)
         {
             //return View(_dataService.SearchWhiskeys(searching));
             return View();
         }
+
+        [Authorize]
         public ActionResult WhiskeyOverView()
         {
             foreach (var item in _dataService.GetAllWhiskeys())
@@ -37,8 +40,8 @@ namespace SlijterijSjonnieLoper_version2.Controllers
             return View(searchViewModel);
         }
 
+        [Authorize]
         [HttpPost]
-
         public ActionResult WhiskeyOverView(SearchViewModel model)
         {
             //foreach (var item in model.whiskeyModels)
@@ -71,18 +74,21 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         }
 
         // GET: Whiskey/Details/5
+        [Authorize]
         public ActionResult WhiskeyData(string id)
         {
             return View(_dataService.GetWhiskey(id));
         }
 
         // GET: Whiskey/Create
+        [Authorize]
         public ActionResult AddNewWhiskey()
         {
             return View();
         }
 
         // POST: Whiskey/Create
+        [Authorize]
         [HttpPost]
         public ActionResult AddNewWhiskey(WhiskeyModel whiskey, HttpPostedFileBase StoredImage, string submit)
         {
@@ -117,12 +123,14 @@ namespace SlijterijSjonnieLoper_version2.Controllers
         }
 
         // GET: Whiskey/Edit/5
+        [Authorize]
         public ActionResult ChangeWhiskeyData(string id)
         {
             return View(_dataService.GetWhiskey(id));
         }
 
         // POST: Whiskey/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult ChangeWhiskeyData(string id, WhiskeyModel whiskey, HttpPostedFileBase StoredImage)
         {

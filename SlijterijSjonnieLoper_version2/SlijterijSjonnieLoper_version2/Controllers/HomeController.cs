@@ -9,10 +9,14 @@ namespace SlijterijSjonnieLoper_version2.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
+
         public ActionResult Index()
         {
             return View();
         }
+
+        [Authorize]
 
         public ActionResult About()
         {
@@ -20,6 +24,8 @@ namespace SlijterijSjonnieLoper_version2.Controllers
 
             return View();
         }
+
+        [Authorize]
 
         public ActionResult Contact()
         {
